@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:nrlfraumlmodell="https://skjema.geonorge.no/SOSI/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/1.0" xmlns:sc="http://www.interactive-instruments.de/ShapeChange/AppInfo" elementFormDefault="qualified" targetNamespace="https://skjema.geonorge.no/SOSI/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/1.0" version="1.0">
+  <import namespace="http://www.interactive-instruments.de/ShapeChange/AppInfo" schemaLocation="https://shapechange.net/resources/schema/ShapeChangeAppinfo.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element abstract="true" name="Fellesegenskaper" substitutionGroup="nrlfraumlmodell:SOSI_Fellesegenskaper" type="nrlfraumlmodell:FellesegenskaperType">
+    <annotation>
+      <documentation>Abstrakt objekttype (ikke instansierbar, dvs. distribueres ikke som et objekt med objektnavn "Fellesegenskaper"), fungerer som et konteinerobjekt i UML-modellen. Denne objekttypen samler egenskaper som er felles for alle instansierbare objekttyper i NRL.
+
+Egenskapene "status", "datafangstdato", "kvalitet" og "informasjon" er opprinnelig hentet fra SOSI del 1 - Generelle typer 5.1 og SOSI_Fellesegenskaper og SOSI_Objekt.</documentation>
+    </annotation>
+  </element>
+  <complexType abstract="true" name="FellesegenskaperType">
+    <complexContent>
+      <extension base="nrlfraumlmodell:SOSI_FellesegenskaperType">
+        <sequence>
+          <element name="status" type="gml:CodeType">
+            <annotation>
+              <documentation>objektets tilstand</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/status</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="verifisertRapporteringsnøyaktighet" type="gml:CodeType">
+            <annotation>
+              <documentation>objekteiers verifikasjon av at objektet som er meldt inn til NRL oppfyller kravene til rapporteringsnøyaktighet angitt i luftfartshinderforskriften</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/verifisertrapporteringsnøyaktighet</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="registreringsdato" type="date">
+            <annotation>
+              <documentation>dato for første registrering av objektet i NRL
+
+Merknad:
+For luftfartshinder førstegangsregistrert før 2014-03-28 er registreringsdato satt til 2014-03-28.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navn" type="string">
+            <annotation>
+              <documentation>navn på objekt i de tilfeller hvor dette har relevans, f.eks. Tryvannstårnet, Gullfaks C, Stolheis Hafjell 360, Hardangerbrua, osv.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="vertikalAvstand" type="double">
+            <annotation>
+              <documentation>maksimal avstand i vertikalplanet fra objektet til underliggende terreng eller vannoverflate
+
+Angis dersom vertikal avstand er større enn 15 meter.
+
+Enhet: meter</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="luftfartshindermerking" type="gml:CodeType">
+            <annotation>
+              <documentation>visuell merking benyttet ved merking av luftfartshinder</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshindermerking</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="luftfartshinderlyssetting" type="gml:CodeType">
+            <annotation>
+              <documentation>hinderlys benyttet ved merking av luftfartshinder</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshinderlyssetting</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="materiale" type="gml:CodeType">
+            <annotation>
+              <documentation>dominerende overflatemateriale for luftfartshinder</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/materiale</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="datafangstdato" type="date">
+            <annotation>
+              <documentation>dato sist gang objektet ble stedfestet</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="kvalitet" type="nrlfraumlmodell:PosisjonskvalitetPropertyType">
+            <annotation>
+              <documentation>beskrivelse av kvaliteten på stedfestingen</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="høydereferanse" type="gml:CodeType">
+            <annotation>
+              <documentation>angir hvilken del av objektet høydeverdien refererer til
+
+Merknad:
+Skal være angitt dersom objektet har høydeverdi ("&lt;i&gt;høyde over havet&lt;/i&gt;")</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/høydereferanse</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="informasjon" type="string">
+            <annotation>
+              <documentation>utfyllende tekst</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FellesegenskaperPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nrlfraumlmodell:Fellesegenskaper"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Identifikasjon" substitutionGroup="gml:AbstractObject" type="nrlfraumlmodell:IdentifikasjonType"/>
+  <complexType name="IdentifikasjonType">
+    <sequence>
+      <element name="lokalId" type="string">
+        <annotation>
+          <documentation>lokal identifikator av et objekt
+
+Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren er unik innenfor navnerommet.</documentation>
+        </annotation>
+      </element>
+      <element name="navnerom" type="string">
+        <annotation>
+          <documentation>navnerom som unikt identifiserer datakilden til et objekt
+
+Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar for de unike identifikatorene og må være registrert i data.geonorge.no eller data.norge.no</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="versjonId" type="string">
+        <annotation>
+          <documentation>identifikasjon av en spesiell versjon av et geografisk objekt (instans)
+
+Merknad: Angis i form av dato og tid</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="IdentifikasjonPropertyType">
+    <sequence>
+      <element ref="nrlfraumlmodell:Identifikasjon"/>
+    </sequence>
+  </complexType>
+  <element name="LuftspennMerknad" substitutionGroup="gml:AbstractObject" type="nrlfraumlmodell:LuftspennMerknadType"/>
+  <complexType name="LuftspennMerknadType">
+    <sequence>
+      <element minOccurs="0" name="farligspenn" type="boolean">
+        <annotation>
+          <documentation>luftspenn som i form av sin beliggenhet er spesielt farlig/viktig å være klar over i forbindelse med lavtflyging</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="farligspennMerknad" type="string">
+        <annotation>
+          <documentation>utfyllende informasjon om aktuelt farlig luftspenn</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="LuftspennMerknadPropertyType">
+    <sequence>
+      <element ref="nrlfraumlmodell:LuftspennMerknad"/>
+    </sequence>
+  </complexType>
+  <element name="NrlFlate" substitutionGroup="nrlfraumlmodell:Fellesegenskaper" type="nrlfraumlmodell:NrlFlateType">
+    <annotation>
+      <documentation>Objekt som er representert som en flate i NRL</documentation>
+    </annotation>
+  </element>
+  <complexType name="NrlFlateType">
+    <complexContent>
+      <extension base="nrlfraumlmodell:FellesegenskaperType">
+        <sequence>
+          <element name="flateType" type="gml:CodeType">
+            <annotation>
+              <documentation>type luftfartshinder registrert som flate</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/flatetype</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="område" type="gml:SurfacePropertyType">
+            <annotation>
+              <documentation>flategeometri</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NrlFlatePropertyType">
+    <sequence minOccurs="0">
+      <element ref="nrlfraumlmodell:NrlFlate"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="NrlLinje" substitutionGroup="nrlfraumlmodell:Fellesegenskaper" type="nrlfraumlmodell:NrlLinjeType">
+    <annotation>
+      <documentation>Objekt som er representert som ei linje i NRL.
+
+
+Merknad: Luftspenn registreres ikke som NrlLinje, men som NrlLuftspenn.</documentation>
+    </annotation>
+  </element>
+  <complexType name="NrlLinjeType">
+    <complexContent>
+      <extension base="nrlfraumlmodell:FellesegenskaperType">
+        <sequence>
+          <element name="linjeType" type="gml:CodeType">
+            <annotation>
+              <documentation>type luftfartshinder registrert som linje</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/linjetype</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="anleggsbredde" type="double">
+            <annotation>
+              <documentation>luftfartshinderets maksimale bredde
+
+Enhet: meter</documentation>
+            </annotation>
+          </element>
+          <element name="beliggenhet" type="gml:CurvePropertyType">
+            <annotation>
+              <documentation>kurvegeometri</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NrlLinjePropertyType">
+    <sequence minOccurs="0">
+      <element ref="nrlfraumlmodell:NrlLinje"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="NrlLuftspenn" substitutionGroup="nrlfraumlmodell:Fellesegenskaper" type="nrlfraumlmodell:NrlLuftspennType">
+    <annotation>
+      <documentation>Objekt som er representert som et luftspenn i NRL</documentation>
+    </annotation>
+  </element>
+  <complexType name="NrlLuftspennType">
+    <complexContent>
+      <extension base="nrlfraumlmodell:FellesegenskaperType">
+        <sequence>
+          <element name="luftspennType" type="gml:CodeType">
+            <annotation>
+              <documentation>type luftfartshinder registrert som luftspenn</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/luftspenntype</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="luftspennMerknad" type="nrlfraumlmodell:LuftspennMerknadPropertyType">
+            <annotation>
+              <documentation>viktige merknader tilknyttet dette luftspennet</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="anleggsbredde" type="double">
+            <annotation>
+              <documentation>luftfartshinderets maksimale bredde
+
+Enhet: meter</documentation>
+            </annotation>
+          </element>
+          <element name="beliggenhet" type="gml:CurvePropertyType">
+            <annotation>
+              <documentation>kurvegeometri</documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="2" minOccurs="0" name="harMast" type="nrlfraumlmodell:NrlMastPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NrlLuftspennPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nrlfraumlmodell:NrlLuftspenn"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="NrlMast" substitutionGroup="nrlfraumlmodell:Fellesegenskaper" type="nrlfraumlmodell:NrlMastType">
+    <annotation>
+      <documentation>Objekt som er representert som ei mast i NRL</documentation>
+    </annotation>
+  </element>
+  <complexType name="NrlMastType">
+    <complexContent>
+      <extension base="nrlfraumlmodell:FellesegenskaperType">
+        <sequence>
+          <element name="mastType" type="gml:CodeType">
+            <annotation>
+              <documentation>type luftfartshinder registrert som mast</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/masttype</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="horisontalAvstand" type="double">
+            <annotation>
+              <documentation>maksimal avstand i horisontalplanet fra punkt til luftfartshinderets avgrensning
+
+Enhet: meter</documentation>
+            </annotation>
+          </element>
+          <element name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>punktgeometri</documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="harLuftspenn" type="nrlfraumlmodell:NrlLuftspennPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NrlMastPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nrlfraumlmodell:NrlMast"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="NrlPunkt" substitutionGroup="nrlfraumlmodell:Fellesegenskaper" type="nrlfraumlmodell:NrlPunktType">
+    <annotation>
+      <documentation>Objekt som er representert som et punkt i NRL.
+Mast registreres ikke som NrlPunkt, men som NrlMast.</documentation>
+    </annotation>
+  </element>
+  <complexType name="NrlPunktType">
+    <complexContent>
+      <extension base="nrlfraumlmodell:FellesegenskaperType">
+        <sequence>
+          <element name="punktType" type="gml:CodeType">
+            <annotation>
+              <documentation>type luftfartshinder registrert som punkt. Ikke aktuelt for master.</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/punkttype</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="horisontalAvstand" type="double">
+            <annotation>
+              <documentation>maksimal avstand i horisontalplanet fra punkt til luftfartshinderets avgrensning
+
+Enhet: meter</documentation>
+            </annotation>
+          </element>
+          <element name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>punktgeometri</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NrlPunktPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nrlfraumlmodell:NrlPunkt"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Posisjonskvalitet" substitutionGroup="gml:AbstractObject" type="nrlfraumlmodell:PosisjonskvalitetType"/>
+  <complexType name="PosisjonskvalitetType">
+    <sequence>
+      <element minOccurs="0" name="datafangstmetode" type="gml:CodeType">
+        <annotation>
+          <documentation>metode for datafangst
+
+Egenskapen beskriver datafangstmetode for grunnrisskoordinater (x,y), eller for både grunnriss og høyde (x,y,z) dersom det ikke er oppgitt noen verdi for datafangstmetodeHøyde.</documentation>
+          <appinfo>
+            <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode</sc:targetCodeListURI>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="nøyaktighet" type="integer">
+        <annotation>
+          <documentation>standardavviket til posisjoneringa av objektet oppgitt i cm
+
+I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+For objekter med punktgeometri benyttes verdi for punktstandardavvik. For objekter med kurvegeometri benyttes standardavviket for tverravviket fra kurva. For objekter med overflate- eller volumgeometri er forståelsen at standardavviket beregnes ut fra (3D) avvikene mellom sann posisjon og nærmeste punkt på overflata.
+
+Merknad:
+Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket og det innebærer at vi forutsetter at det systematiske avviket i liten grad påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres, beregnes og kontrolleres.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="datafangstmetodeHøyde" type="gml:CodeType">
+        <annotation>
+          <documentation>metoden brukt for høyderegistrering av posisjon
+
+Det er bare nødvending å angi en verdi for egenskapen dersom datafangstmetode for høyde avviker fra datafangstmetode for grunnriss.</documentation>
+          <appinfo>
+            <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode</sc:targetCodeListURI>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="nøyaktighetHøyde" type="integer">
+        <annotation>
+          <documentation>standardavviket til posisjoneringa av objektet oppgitt i cm
+
+I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+Merknad:
+Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket og det innebærer at vi forutsetter at det systematiske avviket i liten grad påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres, beregnes og kontrolleres.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="PosisjonskvalitetPropertyType">
+    <sequence>
+      <element ref="nrlfraumlmodell:Posisjonskvalitet"/>
+    </sequence>
+  </complexType>
+  <element abstract="true" name="SOSI_Fellesegenskaper" substitutionGroup="gml:AbstractFeature" type="nrlfraumlmodell:SOSI_FellesegenskaperType">
+    <annotation>
+      <documentation>Abstrakt objekttype (ikke instansierbar, dvs. distribueres ikke som et objekt med objektnavn "SOSI_Fellesegenskaper"), fungerer som et konteinerobjekt i UML-modellen. Denne objekttypen samler egenskaper som er felles for alle instansierbare objekttyper i NRL.</documentation>
+    </annotation>
+  </element>
+  <complexType abstract="true" name="SOSI_FellesegenskaperType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="identifikasjon" type="nrlfraumlmodell:IdentifikasjonPropertyType">
+            <annotation>
+              <documentation>unik identifikasjon av et objekt</documentation>
+            </annotation>
+          </element>
+          <element name="oppdateringsdato" type="date">
+            <annotation>
+              <documentation>tidspunkt for siste endring på objektet
+
+Merknad:
+Oppdateringsdato refererer til en endring av dataene i registeret. Dataene kan dermed endres som følge av en forvaltningsmessig beslutning uten at det virkelige objektet i terrenget er endret.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SOSI_FellesegenskaperPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nrlfraumlmodell:SOSI_Fellesegenskaper"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+</schema>
