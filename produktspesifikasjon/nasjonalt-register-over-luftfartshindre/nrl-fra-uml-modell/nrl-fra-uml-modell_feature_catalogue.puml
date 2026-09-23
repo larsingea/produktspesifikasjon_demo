@@ -1,0 +1,111 @@
+@startuml
+' For wide diagrams, render with: plantuml -DPLANTUML_LIMIT_SIZE=16384 ...
+' The 'scale max' directive below caps the rendered output to prevent the
+' default PlantUML 4096px size limit from cropping the diagram.
+scale max 4000*4000
+
+title Nasjonalt register over luftfartshindre - NRL  fra UML-modell - Objekttyper
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam wrapWidth 200
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "Objekttyper" {
+
+  abstract class Fellesegenskaper <<featureType>> {
+    + status [1] : Status
+    + verifisertRapporteringsnøyaktighet [1] : VerifisertRapporteringsnøyaktighet
+    + registreringsdato [1] : Date
+    + navn [0..1] : CharacterString
+    + vertikalAvstand [0..1] : Real
+    + luftfartshindermerking [0..1] : Luftfartshindermerking
+    + luftfartshinderlyssetting [0..1] : Luftfartshinderlyssetting
+    + materiale [0..1] : Materiale
+    + datafangstdato [0..1] : Date
+    + kvalitet [0..1] : Posisjonskvalitet
+    + høydereferanse [0..1] : Høydereferanse
+    + informasjon [0..1] : CharacterString
+  }
+
+  class NrlLuftspenn <<featureType>> {
+    + luftspennType [1] : LuftspennType
+    + luftspennMerknad [0..1] : LuftspennMerknad
+    + anleggsbredde [0..1] : Real
+    + beliggenhet [1] : GM_Curve
+  }
+
+  class NrlPunkt <<featureType>> {
+    + punktType [1] : PunktType
+    + horisontalAvstand [0..1] : Real
+    + posisjon [1] : GM_Point
+  }
+
+  class NrlFlate <<featureType>> {
+    + flateType [1] : FlateType
+    + område [1] : GM_Surface
+  }
+
+  abstract class SOSI_Fellesegenskaper <<featureType>> {
+    + identifikasjon [1] : Identifikasjon
+    + oppdateringsdato [1] : Date
+  }
+
+  class NrlLinje <<featureType>> {
+    + linjeType [1] : LinjeType
+    + anleggsbredde [0..1] : Real
+    + beliggenhet [1] : GM_Curve
+  }
+
+  class NrlMast <<featureType>> {
+    + mastType [1] : MastType
+    + horisontalAvstand [0..1] : Real
+    + posisjon [1] : GM_Point
+  }
+
+  class Posisjonskvalitet <<dataType>> {
+    + datafangstmetode [0..1] : Datafangstmetode
+    + nøyaktighet [0..1] : Integer
+    + datafangstmetodeHøyde [0..1] : Datafangstmetode
+    + nøyaktighetHøyde [0..1] : Integer
+  }
+
+  class LuftspennMerknad <<dataType>> {
+    + farligspenn [0..1] : Boolean
+    + farligspennMerknad [0..1] : CharacterString
+  }
+
+  class Identifikasjon <<dataType>> {
+    + lokalId [1] : CharacterString
+    + navnerom [1] : CharacterString
+    + versjonId [0..1] : CharacterString
+  }
+}
+
+  SOSI_Fellesegenskaper <|-- Fellesegenskaper
+  Fellesegenskaper <|-- NrlLuftspenn
+  NrlLuftspenn --> NrlMast : harMast [0..2]
+  Fellesegenskaper <|-- NrlPunkt
+  Fellesegenskaper <|-- NrlFlate
+  Fellesegenskaper <|-- NrlLinje
+  Fellesegenskaper <|-- NrlMast
+  NrlMast --> NrlLuftspenn : harLuftspenn [0..*]
+
+@enduml

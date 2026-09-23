@@ -1,0 +1,1316 @@
+# Open Data Contract Standard (ODCS) v3.1.0 — generert fra datamodellen.
+apiVersion: v3.1.0
+kind: DataContract
+id: urn:odcs:nasjonalt-register-over-luftfartshindre-nrl-fra-uml-modell:1.0.0
+version: 1.0.0
+status: active
+name: Nasjonalt register over luftfartshindre - NRL  fra UML-modell
+schema:
+- name: NrlLuftspenn
+  physicalName: nrlluftspenn
+  logicalType: object
+  physicalType: table
+  description: Objekt som er representert som et luftspenn i NRL
+  customProperties:
+  - property: sosiObjektType
+    value: NrlLuftspenn
+  - property: inheritsFrom
+    value: Fellesegenskaper
+  - property: associations
+    value:
+    - role: harMast
+      target: NrlMast
+      cardinality: 0..2
+  properties:
+  - name: identifikasjon
+    logicalType: object
+    properties:
+    - name: lokalId
+      logicalType: string
+      description: 'lokal identifikator av et objekt
+
+
+        Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren
+        er unik innenfor navnerommet.'
+      required: true
+    - name: navnerom
+      logicalType: string
+      description: 'navnerom som unikt identifiserer datakilden til et objekt
+
+
+        Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar
+        for de unike identifikatorene og må være registrert i data.geonorge.no eller
+        data.norge.no'
+      required: true
+    - name: versjonId
+      logicalType: string
+      description: 'identifikasjon av en spesiell versjon av et geografisk objekt
+        (instans)
+
+
+        Merknad: Angis i form av dato og tid'
+    description: unik identifikasjon av et objekt
+    required: true
+  - name: oppdateringsdato
+    logicalType: timestamp
+    description: 'tidspunkt for siste endring på objektet
+
+
+      Merknad:
+
+      Oppdateringsdato refererer til en endring av dataene i registeret. Dataene kan
+      dermed endres som følge av en forvaltningsmessig beslutning uten at det virkelige
+      objektet i terrenget er endret.'
+    required: true
+  - name: status
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/status
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Status
+    - property: asDictionary
+      value: 'true'
+    description: objektets tilstand
+    required: true
+  - name: verifisertRapporteringsnøyaktighet
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/verifisertrapporteringsnøyaktighet
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: VerifisertRapporteringsnøyaktighet
+    - property: asDictionary
+      value: 'true'
+    description: objekteiers verifikasjon av at objektet som er meldt inn til NRL
+      oppfyller kravene til rapporteringsnøyaktighet angitt i luftfartshinderforskriften
+    required: true
+  - name: registreringsdato
+    logicalType: timestamp
+    description: 'dato for første registrering av objektet i NRL
+
+
+      Merknad:
+
+      For luftfartshinder førstegangsregistrert før 2014-03-28 er registreringsdato
+      satt til 2014-03-28.'
+    required: true
+  - name: navn
+    logicalType: string
+    description: navn på objekt i de tilfeller hvor dette har relevans, f.eks. Tryvannstårnet,
+      Gullfaks C, Stolheis Hafjell 360, Hardangerbrua, osv.
+  - name: vertikalAvstand
+    logicalType: number
+    description: 'maksimal avstand i vertikalplanet fra objektet til underliggende
+      terreng eller vannoverflate
+
+
+      Angis dersom vertikal avstand er større enn 15 meter.
+
+
+      Enhet: meter'
+  - name: luftfartshindermerking
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshindermerking
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshindermerking
+    - property: asDictionary
+      value: 'true'
+    description: visuell merking benyttet ved merking av luftfartshinder
+  - name: luftfartshinderlyssetting
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshinderlyssetting
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshinderlyssetting
+    - property: asDictionary
+      value: 'true'
+    description: hinderlys benyttet ved merking av luftfartshinder
+  - name: materiale
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/materiale
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Materiale
+    - property: asDictionary
+      value: 'true'
+    description: dominerende overflatemateriale for luftfartshinder
+  - name: datafangstdato
+    logicalType: date
+    description: dato sist gang objektet ble stedfestet
+  - name: kvalitet
+    logicalType: object
+    properties:
+    - name: datafangstmetode
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metode for datafangst
+
+
+        Egenskapen beskriver datafangstmetode for grunnrisskoordinater (x,y), eller
+        for både grunnriss og høyde (x,y,z) dersom det ikke er oppgitt noen verdi
+        for datafangstmetodeHøyde.'
+    - name: nøyaktighet
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        For objekter med punktgeometri benyttes verdi for punktstandardavvik. For
+        objekter med kurvegeometri benyttes standardavviket for tverravviket fra kurva.
+        For objekter med overflate- eller volumgeometri er forståelsen at standardavviket
+        beregnes ut fra (3D) avvikene mellom sann posisjon og nærmeste punkt på overflata.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    - name: datafangstmetodeHøyde
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metoden brukt for høyderegistrering av posisjon
+
+
+        Det er bare nødvending å angi en verdi for egenskapen dersom datafangstmetode
+        for høyde avviker fra datafangstmetode for grunnriss.'
+    - name: nøyaktighetHøyde
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    description: beskrivelse av kvaliteten på stedfestingen
+  - name: høydereferanse
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/høydereferanse
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Høydereferanse
+    - property: asDictionary
+      value: 'true'
+    description: 'angir hvilken del av objektet høydeverdien refererer til
+
+
+      Merknad:
+
+      Skal være angitt dersom objektet har høydeverdi ("<i>høyde over havet</i>")'
+  - name: informasjon
+    logicalType: string
+    description: utfyllende tekst
+  - name: luftspennType
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/luftspenntype
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: LuftspennType
+    - property: asDictionary
+      value: 'true'
+    description: type luftfartshinder registrert som luftspenn
+    required: true
+  - name: luftspennMerknad
+    logicalType: object
+    properties:
+    - name: farligspenn
+      logicalType: boolean
+      description: luftspenn som i form av sin beliggenhet er spesielt farlig/viktig
+        å være klar over i forbindelse med lavtflyging
+    - name: farligspennMerknad
+      logicalType: string
+      description: utfyllende informasjon om aktuelt farlig luftspenn
+    description: viktige merknader tilknyttet dette luftspennet
+  - name: anleggsbredde
+    logicalType: number
+    description: 'luftfartshinderets maksimale bredde
+
+
+      Enhet: meter'
+  - name: beliggenhet
+    logicalType: object
+    physicalType: geometry(LineString)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: LineString
+- name: NrlPunkt
+  physicalName: nrlpunkt
+  logicalType: object
+  physicalType: table
+  description: 'Objekt som er representert som et punkt i NRL.
+
+    Mast registreres ikke som NrlPunkt, men som NrlMast.'
+  customProperties:
+  - property: sosiObjektType
+    value: NrlPunkt
+  - property: inheritsFrom
+    value: Fellesegenskaper
+  properties:
+  - name: identifikasjon
+    logicalType: object
+    properties:
+    - name: lokalId
+      logicalType: string
+      description: 'lokal identifikator av et objekt
+
+
+        Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren
+        er unik innenfor navnerommet.'
+      required: true
+    - name: navnerom
+      logicalType: string
+      description: 'navnerom som unikt identifiserer datakilden til et objekt
+
+
+        Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar
+        for de unike identifikatorene og må være registrert i data.geonorge.no eller
+        data.norge.no'
+      required: true
+    - name: versjonId
+      logicalType: string
+      description: 'identifikasjon av en spesiell versjon av et geografisk objekt
+        (instans)
+
+
+        Merknad: Angis i form av dato og tid'
+    description: unik identifikasjon av et objekt
+    required: true
+  - name: oppdateringsdato
+    logicalType: timestamp
+    description: 'tidspunkt for siste endring på objektet
+
+
+      Merknad:
+
+      Oppdateringsdato refererer til en endring av dataene i registeret. Dataene kan
+      dermed endres som følge av en forvaltningsmessig beslutning uten at det virkelige
+      objektet i terrenget er endret.'
+    required: true
+  - name: status
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/status
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Status
+    - property: asDictionary
+      value: 'true'
+    description: objektets tilstand
+    required: true
+  - name: verifisertRapporteringsnøyaktighet
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/verifisertrapporteringsnøyaktighet
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: VerifisertRapporteringsnøyaktighet
+    - property: asDictionary
+      value: 'true'
+    description: objekteiers verifikasjon av at objektet som er meldt inn til NRL
+      oppfyller kravene til rapporteringsnøyaktighet angitt i luftfartshinderforskriften
+    required: true
+  - name: registreringsdato
+    logicalType: timestamp
+    description: 'dato for første registrering av objektet i NRL
+
+
+      Merknad:
+
+      For luftfartshinder førstegangsregistrert før 2014-03-28 er registreringsdato
+      satt til 2014-03-28.'
+    required: true
+  - name: navn
+    logicalType: string
+    description: navn på objekt i de tilfeller hvor dette har relevans, f.eks. Tryvannstårnet,
+      Gullfaks C, Stolheis Hafjell 360, Hardangerbrua, osv.
+  - name: vertikalAvstand
+    logicalType: number
+    description: 'maksimal avstand i vertikalplanet fra objektet til underliggende
+      terreng eller vannoverflate
+
+
+      Angis dersom vertikal avstand er større enn 15 meter.
+
+
+      Enhet: meter'
+  - name: luftfartshindermerking
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshindermerking
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshindermerking
+    - property: asDictionary
+      value: 'true'
+    description: visuell merking benyttet ved merking av luftfartshinder
+  - name: luftfartshinderlyssetting
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshinderlyssetting
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshinderlyssetting
+    - property: asDictionary
+      value: 'true'
+    description: hinderlys benyttet ved merking av luftfartshinder
+  - name: materiale
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/materiale
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Materiale
+    - property: asDictionary
+      value: 'true'
+    description: dominerende overflatemateriale for luftfartshinder
+  - name: datafangstdato
+    logicalType: date
+    description: dato sist gang objektet ble stedfestet
+  - name: kvalitet
+    logicalType: object
+    properties:
+    - name: datafangstmetode
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metode for datafangst
+
+
+        Egenskapen beskriver datafangstmetode for grunnrisskoordinater (x,y), eller
+        for både grunnriss og høyde (x,y,z) dersom det ikke er oppgitt noen verdi
+        for datafangstmetodeHøyde.'
+    - name: nøyaktighet
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        For objekter med punktgeometri benyttes verdi for punktstandardavvik. For
+        objekter med kurvegeometri benyttes standardavviket for tverravviket fra kurva.
+        For objekter med overflate- eller volumgeometri er forståelsen at standardavviket
+        beregnes ut fra (3D) avvikene mellom sann posisjon og nærmeste punkt på overflata.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    - name: datafangstmetodeHøyde
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metoden brukt for høyderegistrering av posisjon
+
+
+        Det er bare nødvending å angi en verdi for egenskapen dersom datafangstmetode
+        for høyde avviker fra datafangstmetode for grunnriss.'
+    - name: nøyaktighetHøyde
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    description: beskrivelse av kvaliteten på stedfestingen
+  - name: høydereferanse
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/høydereferanse
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Høydereferanse
+    - property: asDictionary
+      value: 'true'
+    description: 'angir hvilken del av objektet høydeverdien refererer til
+
+
+      Merknad:
+
+      Skal være angitt dersom objektet har høydeverdi ("<i>høyde over havet</i>")'
+  - name: informasjon
+    logicalType: string
+    description: utfyllende tekst
+  - name: punktType
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/punkttype
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: PunktType
+    - property: asDictionary
+      value: 'true'
+    description: type luftfartshinder registrert som punkt. Ikke aktuelt for master.
+    required: true
+  - name: horisontalAvstand
+    logicalType: number
+    description: 'maksimal avstand i horisontalplanet fra punkt til luftfartshinderets
+      avgrensning
+
+
+      Enhet: meter'
+  - name: posisjon
+    logicalType: object
+    physicalType: geometry(Point)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: Point
+- name: NrlFlate
+  physicalName: nrlflate
+  logicalType: object
+  physicalType: table
+  description: Objekt som er representert som en flate i NRL
+  customProperties:
+  - property: sosiObjektType
+    value: NrlFlate
+  - property: inheritsFrom
+    value: Fellesegenskaper
+  properties:
+  - name: identifikasjon
+    logicalType: object
+    properties:
+    - name: lokalId
+      logicalType: string
+      description: 'lokal identifikator av et objekt
+
+
+        Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren
+        er unik innenfor navnerommet.'
+      required: true
+    - name: navnerom
+      logicalType: string
+      description: 'navnerom som unikt identifiserer datakilden til et objekt
+
+
+        Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar
+        for de unike identifikatorene og må være registrert i data.geonorge.no eller
+        data.norge.no'
+      required: true
+    - name: versjonId
+      logicalType: string
+      description: 'identifikasjon av en spesiell versjon av et geografisk objekt
+        (instans)
+
+
+        Merknad: Angis i form av dato og tid'
+    description: unik identifikasjon av et objekt
+    required: true
+  - name: oppdateringsdato
+    logicalType: timestamp
+    description: 'tidspunkt for siste endring på objektet
+
+
+      Merknad:
+
+      Oppdateringsdato refererer til en endring av dataene i registeret. Dataene kan
+      dermed endres som følge av en forvaltningsmessig beslutning uten at det virkelige
+      objektet i terrenget er endret.'
+    required: true
+  - name: status
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/status
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Status
+    - property: asDictionary
+      value: 'true'
+    description: objektets tilstand
+    required: true
+  - name: verifisertRapporteringsnøyaktighet
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/verifisertrapporteringsnøyaktighet
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: VerifisertRapporteringsnøyaktighet
+    - property: asDictionary
+      value: 'true'
+    description: objekteiers verifikasjon av at objektet som er meldt inn til NRL
+      oppfyller kravene til rapporteringsnøyaktighet angitt i luftfartshinderforskriften
+    required: true
+  - name: registreringsdato
+    logicalType: timestamp
+    description: 'dato for første registrering av objektet i NRL
+
+
+      Merknad:
+
+      For luftfartshinder førstegangsregistrert før 2014-03-28 er registreringsdato
+      satt til 2014-03-28.'
+    required: true
+  - name: navn
+    logicalType: string
+    description: navn på objekt i de tilfeller hvor dette har relevans, f.eks. Tryvannstårnet,
+      Gullfaks C, Stolheis Hafjell 360, Hardangerbrua, osv.
+  - name: vertikalAvstand
+    logicalType: number
+    description: 'maksimal avstand i vertikalplanet fra objektet til underliggende
+      terreng eller vannoverflate
+
+
+      Angis dersom vertikal avstand er større enn 15 meter.
+
+
+      Enhet: meter'
+  - name: luftfartshindermerking
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshindermerking
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshindermerking
+    - property: asDictionary
+      value: 'true'
+    description: visuell merking benyttet ved merking av luftfartshinder
+  - name: luftfartshinderlyssetting
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshinderlyssetting
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshinderlyssetting
+    - property: asDictionary
+      value: 'true'
+    description: hinderlys benyttet ved merking av luftfartshinder
+  - name: materiale
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/materiale
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Materiale
+    - property: asDictionary
+      value: 'true'
+    description: dominerende overflatemateriale for luftfartshinder
+  - name: datafangstdato
+    logicalType: date
+    description: dato sist gang objektet ble stedfestet
+  - name: kvalitet
+    logicalType: object
+    properties:
+    - name: datafangstmetode
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metode for datafangst
+
+
+        Egenskapen beskriver datafangstmetode for grunnrisskoordinater (x,y), eller
+        for både grunnriss og høyde (x,y,z) dersom det ikke er oppgitt noen verdi
+        for datafangstmetodeHøyde.'
+    - name: nøyaktighet
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        For objekter med punktgeometri benyttes verdi for punktstandardavvik. For
+        objekter med kurvegeometri benyttes standardavviket for tverravviket fra kurva.
+        For objekter med overflate- eller volumgeometri er forståelsen at standardavviket
+        beregnes ut fra (3D) avvikene mellom sann posisjon og nærmeste punkt på overflata.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    - name: datafangstmetodeHøyde
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metoden brukt for høyderegistrering av posisjon
+
+
+        Det er bare nødvending å angi en verdi for egenskapen dersom datafangstmetode
+        for høyde avviker fra datafangstmetode for grunnriss.'
+    - name: nøyaktighetHøyde
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    description: beskrivelse av kvaliteten på stedfestingen
+  - name: høydereferanse
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/høydereferanse
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Høydereferanse
+    - property: asDictionary
+      value: 'true'
+    description: 'angir hvilken del av objektet høydeverdien refererer til
+
+
+      Merknad:
+
+      Skal være angitt dersom objektet har høydeverdi ("<i>høyde over havet</i>")'
+  - name: informasjon
+    logicalType: string
+    description: utfyllende tekst
+  - name: flateType
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/flatetype
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: FlateType
+    - property: asDictionary
+      value: 'true'
+    description: type luftfartshinder registrert som flate
+    required: true
+  - name: område
+    logicalType: object
+    physicalType: geometry(Surface)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: Surface
+- name: NrlLinje
+  physicalName: nrllinje
+  logicalType: object
+  physicalType: table
+  description: 'Objekt som er representert som ei linje i NRL.
+
+
+
+    Merknad: Luftspenn registreres ikke som NrlLinje, men som NrlLuftspenn.'
+  customProperties:
+  - property: sosiObjektType
+    value: NrlLinje
+  - property: inheritsFrom
+    value: Fellesegenskaper
+  properties:
+  - name: identifikasjon
+    logicalType: object
+    properties:
+    - name: lokalId
+      logicalType: string
+      description: 'lokal identifikator av et objekt
+
+
+        Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren
+        er unik innenfor navnerommet.'
+      required: true
+    - name: navnerom
+      logicalType: string
+      description: 'navnerom som unikt identifiserer datakilden til et objekt
+
+
+        Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar
+        for de unike identifikatorene og må være registrert i data.geonorge.no eller
+        data.norge.no'
+      required: true
+    - name: versjonId
+      logicalType: string
+      description: 'identifikasjon av en spesiell versjon av et geografisk objekt
+        (instans)
+
+
+        Merknad: Angis i form av dato og tid'
+    description: unik identifikasjon av et objekt
+    required: true
+  - name: oppdateringsdato
+    logicalType: timestamp
+    description: 'tidspunkt for siste endring på objektet
+
+
+      Merknad:
+
+      Oppdateringsdato refererer til en endring av dataene i registeret. Dataene kan
+      dermed endres som følge av en forvaltningsmessig beslutning uten at det virkelige
+      objektet i terrenget er endret.'
+    required: true
+  - name: status
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/status
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Status
+    - property: asDictionary
+      value: 'true'
+    description: objektets tilstand
+    required: true
+  - name: verifisertRapporteringsnøyaktighet
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/verifisertrapporteringsnøyaktighet
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: VerifisertRapporteringsnøyaktighet
+    - property: asDictionary
+      value: 'true'
+    description: objekteiers verifikasjon av at objektet som er meldt inn til NRL
+      oppfyller kravene til rapporteringsnøyaktighet angitt i luftfartshinderforskriften
+    required: true
+  - name: registreringsdato
+    logicalType: timestamp
+    description: 'dato for første registrering av objektet i NRL
+
+
+      Merknad:
+
+      For luftfartshinder førstegangsregistrert før 2014-03-28 er registreringsdato
+      satt til 2014-03-28.'
+    required: true
+  - name: navn
+    logicalType: string
+    description: navn på objekt i de tilfeller hvor dette har relevans, f.eks. Tryvannstårnet,
+      Gullfaks C, Stolheis Hafjell 360, Hardangerbrua, osv.
+  - name: vertikalAvstand
+    logicalType: number
+    description: 'maksimal avstand i vertikalplanet fra objektet til underliggende
+      terreng eller vannoverflate
+
+
+      Angis dersom vertikal avstand er større enn 15 meter.
+
+
+      Enhet: meter'
+  - name: luftfartshindermerking
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshindermerking
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshindermerking
+    - property: asDictionary
+      value: 'true'
+    description: visuell merking benyttet ved merking av luftfartshinder
+  - name: luftfartshinderlyssetting
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshinderlyssetting
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshinderlyssetting
+    - property: asDictionary
+      value: 'true'
+    description: hinderlys benyttet ved merking av luftfartshinder
+  - name: materiale
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/materiale
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Materiale
+    - property: asDictionary
+      value: 'true'
+    description: dominerende overflatemateriale for luftfartshinder
+  - name: datafangstdato
+    logicalType: date
+    description: dato sist gang objektet ble stedfestet
+  - name: kvalitet
+    logicalType: object
+    properties:
+    - name: datafangstmetode
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metode for datafangst
+
+
+        Egenskapen beskriver datafangstmetode for grunnrisskoordinater (x,y), eller
+        for både grunnriss og høyde (x,y,z) dersom det ikke er oppgitt noen verdi
+        for datafangstmetodeHøyde.'
+    - name: nøyaktighet
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        For objekter med punktgeometri benyttes verdi for punktstandardavvik. For
+        objekter med kurvegeometri benyttes standardavviket for tverravviket fra kurva.
+        For objekter med overflate- eller volumgeometri er forståelsen at standardavviket
+        beregnes ut fra (3D) avvikene mellom sann posisjon og nærmeste punkt på overflata.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    - name: datafangstmetodeHøyde
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metoden brukt for høyderegistrering av posisjon
+
+
+        Det er bare nødvending å angi en verdi for egenskapen dersom datafangstmetode
+        for høyde avviker fra datafangstmetode for grunnriss.'
+    - name: nøyaktighetHøyde
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    description: beskrivelse av kvaliteten på stedfestingen
+  - name: høydereferanse
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/høydereferanse
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Høydereferanse
+    - property: asDictionary
+      value: 'true'
+    description: 'angir hvilken del av objektet høydeverdien refererer til
+
+
+      Merknad:
+
+      Skal være angitt dersom objektet har høydeverdi ("<i>høyde over havet</i>")'
+  - name: informasjon
+    logicalType: string
+    description: utfyllende tekst
+  - name: linjeType
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/linjetype
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: LinjeType
+    - property: asDictionary
+      value: 'true'
+    description: type luftfartshinder registrert som linje
+    required: true
+  - name: anleggsbredde
+    logicalType: number
+    description: 'luftfartshinderets maksimale bredde
+
+
+      Enhet: meter'
+  - name: beliggenhet
+    logicalType: object
+    physicalType: geometry(LineString)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: LineString
+- name: NrlMast
+  physicalName: nrlmast
+  logicalType: object
+  physicalType: table
+  description: Objekt som er representert som ei mast i NRL
+  customProperties:
+  - property: sosiObjektType
+    value: NrlMast
+  - property: inheritsFrom
+    value: Fellesegenskaper
+  - property: associations
+    value:
+    - role: harLuftspenn
+      target: NrlLuftspenn
+      cardinality: 0..*
+  properties:
+  - name: identifikasjon
+    logicalType: object
+    properties:
+    - name: lokalId
+      logicalType: string
+      description: 'lokal identifikator av et objekt
+
+
+        Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren
+        er unik innenfor navnerommet.'
+      required: true
+    - name: navnerom
+      logicalType: string
+      description: 'navnerom som unikt identifiserer datakilden til et objekt
+
+
+        Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar
+        for de unike identifikatorene og må være registrert i data.geonorge.no eller
+        data.norge.no'
+      required: true
+    - name: versjonId
+      logicalType: string
+      description: 'identifikasjon av en spesiell versjon av et geografisk objekt
+        (instans)
+
+
+        Merknad: Angis i form av dato og tid'
+    description: unik identifikasjon av et objekt
+    required: true
+  - name: oppdateringsdato
+    logicalType: timestamp
+    description: 'tidspunkt for siste endring på objektet
+
+
+      Merknad:
+
+      Oppdateringsdato refererer til en endring av dataene i registeret. Dataene kan
+      dermed endres som følge av en forvaltningsmessig beslutning uten at det virkelige
+      objektet i terrenget er endret.'
+    required: true
+  - name: status
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/status
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Status
+    - property: asDictionary
+      value: 'true'
+    description: objektets tilstand
+    required: true
+  - name: verifisertRapporteringsnøyaktighet
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/verifisertrapporteringsnøyaktighet
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: VerifisertRapporteringsnøyaktighet
+    - property: asDictionary
+      value: 'true'
+    description: objekteiers verifikasjon av at objektet som er meldt inn til NRL
+      oppfyller kravene til rapporteringsnøyaktighet angitt i luftfartshinderforskriften
+    required: true
+  - name: registreringsdato
+    logicalType: timestamp
+    description: 'dato for første registrering av objektet i NRL
+
+
+      Merknad:
+
+      For luftfartshinder førstegangsregistrert før 2014-03-28 er registreringsdato
+      satt til 2014-03-28.'
+    required: true
+  - name: navn
+    logicalType: string
+    description: navn på objekt i de tilfeller hvor dette har relevans, f.eks. Tryvannstårnet,
+      Gullfaks C, Stolheis Hafjell 360, Hardangerbrua, osv.
+  - name: vertikalAvstand
+    logicalType: number
+    description: 'maksimal avstand i vertikalplanet fra objektet til underliggende
+      terreng eller vannoverflate
+
+
+      Angis dersom vertikal avstand er større enn 15 meter.
+
+
+      Enhet: meter'
+  - name: luftfartshindermerking
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshindermerking
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshindermerking
+    - property: asDictionary
+      value: 'true'
+    description: visuell merking benyttet ved merking av luftfartshinder
+  - name: luftfartshinderlyssetting
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/luftfartshinderlyssetting
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Luftfartshinderlyssetting
+    - property: asDictionary
+      value: 'true'
+    description: hinderlys benyttet ved merking av luftfartshinder
+  - name: materiale
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/materiale
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Materiale
+    - property: asDictionary
+      value: 'true'
+    description: dominerende overflatemateriale for luftfartshinder
+  - name: datafangstdato
+    logicalType: date
+    description: dato sist gang objektet ble stedfestet
+  - name: kvalitet
+    logicalType: object
+    properties:
+    - name: datafangstmetode
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metode for datafangst
+
+
+        Egenskapen beskriver datafangstmetode for grunnrisskoordinater (x,y), eller
+        for både grunnriss og høyde (x,y,z) dersom det ikke er oppgitt noen verdi
+        for datafangstmetodeHøyde.'
+    - name: nøyaktighet
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        For objekter med punktgeometri benyttes verdi for punktstandardavvik. For
+        objekter med kurvegeometri benyttes standardavviket for tverravviket fra kurva.
+        For objekter med overflate- eller volumgeometri er forståelsen at standardavviket
+        beregnes ut fra (3D) avvikene mellom sann posisjon og nærmeste punkt på overflata.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    - name: datafangstmetodeHøyde
+      logicalType: string
+      authoritativeDefinitions:
+      - url: https://register.geonorge.no/sosi-kodelister/fkb/generell/5.0/datafangstmetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Datafangstmetode
+      - property: asDictionary
+        value: 'true'
+      description: 'metoden brukt for høyderegistrering av posisjon
+
+
+        Det er bare nødvending å angi en verdi for egenskapen dersom datafangstmetode
+        for høyde avviker fra datafangstmetode for grunnriss.'
+    - name: nøyaktighetHøyde
+      logicalType: integer
+      description: 'standardavviket til posisjoneringa av objektet oppgitt i cm
+
+
+        I de aller fleste sammenhenger benyttes en anslått eller forventet verdi for
+        standardavvik, men dersom man har en beregnet verdi skal denne benyttes.
+
+
+        Merknad:
+
+        Verdien er ment å beskrive nøyaktigheten til objektet sammenlignet med sann
+        verdi. Standardavvik er i utgangspunktet et mål på det tilfeldige avviket
+        og det innebærer at vi forutsetter at det systematiske avviket i liten grad
+        påvirker nøyaktigheten til posisjoneringa. For fotogrammetriske data settes
+        som hovedregel verdien lik kravet til standardavvik ved datafangst. Se standarden
+        Geodatakvalitet for nærmere definisjon av standardavvik og hvordan dette defineres,
+        beregnes og kontrolleres.'
+    description: beskrivelse av kvaliteten på stedfestingen
+  - name: høydereferanse
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-rapportering/1.0/høydereferanse
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Høydereferanse
+    - property: asDictionary
+      value: 'true'
+    description: 'angir hvilken del av objektet høydeverdien refererer til
+
+
+      Merknad:
+
+      Skal være angitt dersom objektet har høydeverdi ("<i>høyde over havet</i>")'
+  - name: informasjon
+    logicalType: string
+    description: utfyllende tekst
+  - name: mastType
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/luftfartshinder/nrl-distribusjon/2.0/masttype
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: MastType
+    - property: asDictionary
+      value: 'true'
+    description: type luftfartshinder registrert som mast
+    required: true
+  - name: horisontalAvstand
+    logicalType: number
+    description: 'maksimal avstand i horisontalplanet fra punkt til luftfartshinderets
+      avgrensning
+
+
+      Enhet: meter'
+  - name: posisjon
+    logicalType: object
+    physicalType: geometry(Point)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: Point

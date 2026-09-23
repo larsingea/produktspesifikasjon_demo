@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="/home/runner/work/produktspesifikasjon_demo/produktspesifikasjon_demo/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/schema/shapechange-config.xml" end="Wed Sep 23 22:55:12 UTC 2026" resultCode="0" start="Wed Sep 23 22:55:02 UTC 2026" version="4.0.0">
+  <Messages>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: START ----------"/>
+    <Info message="Validating input parameters."/>
+    <Info message="Validation of input parameters completed."/>
+    <Info message="Validating log parameters."/>
+    <Info message="Validation of log parameters completed."/>
+    <ProcessFlowInfo message="--- Validating transformer with @id 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema' and @inputs 'INPUT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.json.JsonSchemaTarget' and @inputs 'INPUT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' and @inputs 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: COMPLETE ----------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'nrl-fra-uml-modell', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'XML Schema' for input 'INPUT'."/>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'nrl-fra-uml-modell', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'JSON Schema' for input 'INPUT'."/>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.json.JsonSchemaTarget' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Now processing transformation 'LDPROXY_FLAT' for input ID: 'INPUT'."/>
+    <ProcessFlowInfo message="========== processing phase =========="/>
+    <ProcessFlowInfo message="---------- now processing: rule-trf-prop-flatten-types ----------"/>
+    <ProcessFlowInfo message="========== postprocessing phase =========="/>
+    <ProcessFlowInfo message="---------- TransformationManager postprocessing: validating constraints ----------"/>
+    <ProcessFlowInfo message="Performed transformation for transformer ID 'LDPROXY_FLAT' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'nrl-fra-uml-modell', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'Ldproxy (v2)' for input 'LDPROXY_FLAT'."/>
+    <Info message="The target configuration does not contain advanced process configuration infos."/>
+    <Warning message="Type 'Fellesegenskaper' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'nrl-fra-uml-modell::Objekttyper::Fellesegenskaper'"/>
+    </Warning>
+    <Error message="Type 'NrlFlate' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'nrl-fra-uml-modell::Objekttyper::NrlFlate'"/>
+    </Error>
+    <Error message="Type 'NrlLinje' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'nrl-fra-uml-modell::Objekttyper::NrlLinje'"/>
+    </Error>
+    <Error message="Type 'NrlLuftspenn' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'nrl-fra-uml-modell::Objekttyper::NrlLuftspenn'"/>
+    </Error>
+    <Error message="Type 'NrlMast' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'nrl-fra-uml-modell::Objekttyper::NrlMast'"/>
+    </Error>
+    <Error message="Type 'NrlPunkt' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'nrl-fra-uml-modell::Objekttyper::NrlPunkt'"/>
+    </Error>
+    <Warning message="Type 'SOSI_Fellesegenskaper' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'nrl-fra-uml-modell::Objekttyper::SOSI_Fellesegenskaper'"/>
+    </Warning>
+    <Info message="Could not compute a label for codelist/enumeration 'Status'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::Status'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'VerifisertRapporteringsnøyaktighet'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::VerifisertRapporteringsnøyaktighet'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Luftfartshindermerking'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::Luftfartshindermerking'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Luftfartshinderlyssetting'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::Luftfartshinderlyssetting'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Materiale'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::Materiale'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Datafangstmetode'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::Datafangstmetode'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Høydereferanse'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::Høydereferanse'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'LuftspennType'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::LuftspennType'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'PunktType'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::PunktType'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'FlateType'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::FlateType'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'LinjeType'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::LinjeType'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'MastType'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'nrl-fra-uml-modell::MastType'"/>
+    </Info>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' for input ID: 'LDPROXY_FLAT'.&#10;-------------------------------------------------"/>
+  </Messages>
+  <Results>
+    <Result href="file:/home/runner/work/produktspesifikasjon_demo/produktspesifikasjon_demo/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/schema/xsd/INPUT/nrl-fra-uml-modell.xsd" scope="https://skjema.geonorge.no/SOSI/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/1.0" target="XML Schema">nrl-fra-uml-modell.xsd</Result>
+    <Result href="file:/home/runner/work/produktspesifikasjon_demo/produktspesifikasjon_demo/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/schema/jsonschema/INPUT/nrlfraumlmodell/nrl-fra-uml-modell.json" target="JSON Schema">nrl-fra-uml-modell.json</Result>
+  </Results>
+</ShapeChangeResult>

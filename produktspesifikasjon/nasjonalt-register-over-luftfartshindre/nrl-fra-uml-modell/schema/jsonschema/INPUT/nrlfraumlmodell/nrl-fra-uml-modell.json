@@ -1,0 +1,316 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://skjema.geonorge.no/SOSI/produktspesifikasjon/nasjonalt-register-over-luftfartshindre/nrl-fra-uml-modell/nrlfraumlmodell/nrl-fra-uml-modell.json",
+  "definitions": {
+    "Datafangstmetode": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Fellesegenskaper": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SOSI_Fellesegenskaper"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "$ref": "#/definitions/Status"
+            },
+            "verifisertRapporteringsnøyaktighet": {
+              "$ref": "#/definitions/VerifisertRapporteringsnøyaktighet"
+            },
+            "registreringsdato": {
+              "type": "string",
+              "format": "date"
+            },
+            "navn": {
+              "type": "string"
+            },
+            "vertikalAvstand": {
+              "type": "number"
+            },
+            "luftfartshindermerking": {
+              "$ref": "#/definitions/Luftfartshindermerking"
+            },
+            "luftfartshinderlyssetting": {
+              "$ref": "#/definitions/Luftfartshinderlyssetting"
+            },
+            "materiale": {
+              "$ref": "#/definitions/Materiale"
+            },
+            "datafangstdato": {
+              "type": "string",
+              "format": "date"
+            },
+            "kvalitet": {
+              "$ref": "#/definitions/Posisjonskvalitet"
+            },
+            "høydereferanse": {
+              "$ref": "#/definitions/Høydereferanse"
+            },
+            "informasjon": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "registreringsdato",
+            "status",
+            "verifisertRapporteringsnøyaktighet"
+          ]
+        }
+      ]
+    },
+    "FlateType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Høydereferanse": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Identifikasjon": {
+      "type": "object",
+      "properties": {
+        "lokalId": {
+          "type": "string"
+        },
+        "navnerom": {
+          "type": "string"
+        },
+        "versjonId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lokalId",
+        "navnerom"
+      ]
+    },
+    "LinjeType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Luftfartshinderlyssetting": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Luftfartshindermerking": {
+      "type": "string",
+      "format": "uri"
+    },
+    "LuftspennMerknad": {
+      "type": "object",
+      "properties": {
+        "farligspenn": {
+          "type": "boolean"
+        },
+        "farligspennMerknad": {
+          "type": "string"
+        }
+      }
+    },
+    "LuftspennType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "MastType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Materiale": {
+      "type": "string",
+      "format": "uri"
+    },
+    "NrlFlate": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Fellesegenskaper"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Polygon.json"
+            },
+            "flateType": {
+              "$ref": "#/definitions/FlateType"
+            }
+          },
+          "required": [
+            "flateType"
+          ]
+        }
+      ]
+    },
+    "NrlLinje": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Fellesegenskaper"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/LineString.json"
+            },
+            "linjeType": {
+              "$ref": "#/definitions/LinjeType"
+            },
+            "anleggsbredde": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "linjeType"
+          ]
+        }
+      ]
+    },
+    "NrlLuftspenn": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Fellesegenskaper"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/LineString.json"
+            },
+            "luftspennType": {
+              "$ref": "#/definitions/LuftspennType"
+            },
+            "luftspennMerknad": {
+              "$ref": "#/definitions/LuftspennMerknad"
+            },
+            "anleggsbredde": {
+              "type": "number"
+            },
+            "harMast": {
+              "type": "array",
+              "maxItems": 2,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "luftspennType"
+          ]
+        }
+      ]
+    },
+    "NrlMast": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Fellesegenskaper"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Point.json"
+            },
+            "mastType": {
+              "$ref": "#/definitions/MastType"
+            },
+            "horisontalAvstand": {
+              "type": "number"
+            },
+            "harLuftspenn": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "mastType"
+          ]
+        }
+      ]
+    },
+    "NrlPunkt": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Fellesegenskaper"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Point.json"
+            },
+            "punktType": {
+              "$ref": "#/definitions/PunktType"
+            },
+            "horisontalAvstand": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "punktType"
+          ]
+        }
+      ]
+    },
+    "Posisjonskvalitet": {
+      "type": "object",
+      "properties": {
+        "datafangstmetode": {
+          "$ref": "#/definitions/Datafangstmetode"
+        },
+        "nøyaktighet": {
+          "type": "integer"
+        },
+        "datafangstmetodeHøyde": {
+          "$ref": "#/definitions/Datafangstmetode"
+        },
+        "nøyaktighetHøyde": {
+          "type": "integer"
+        }
+      }
+    },
+    "PunktType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "SOSI_Fellesegenskaper": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifikasjon": {
+          "$ref": "#/definitions/Identifikasjon"
+        },
+        "oppdateringsdato": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "@type",
+        "identifikasjon",
+        "oppdateringsdato"
+      ]
+    },
+    "Status": {
+      "type": "string",
+      "format": "uri"
+    },
+    "VerifisertRapporteringsnøyaktighet": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

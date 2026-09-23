@@ -1,0 +1,183 @@
+---
+id: nrl_fra_uml_modell
+enabled: true
+providerType: FEATURE
+providerSubType: SQL
+nativeCrs:
+  code: 25833
+  forceAxisOrder: NONE
+nativeTimeZone: Europe/Oslo
+connectionInfo:
+  database: FIXME
+  host: FIXME
+  user: FIXME
+  password: FIXME-base64-encoded
+  schemas:
+  - public
+sourcePathDefaults:
+  primaryKey: objid
+  sortKey: objid
+types:
+  nrlflate:
+    sourcePath: /nrlflate
+    type: OBJECT
+    objectType: NrlFlate
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      flateType:
+        sourcePath: flatetype
+        type: STRING
+        constraints:
+          codelist: FlateType
+          required: true
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+  nrllinje:
+    sourcePath: /nrllinje
+    type: OBJECT
+    objectType: NrlLinje
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      linjeType:
+        sourcePath: linjetype
+        type: STRING
+        constraints:
+          codelist: LinjeType
+          required: true
+      anleggsbredde:
+        sourcePath: anleggsbredde
+        type: FLOAT
+      beliggenhet:
+        sourcePath: beliggenhet
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+  nrlluftspenn:
+    sourcePath: /nrlluftspenn
+    type: OBJECT
+    objectType: NrlLuftspenn
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      luftspennType:
+        sourcePath: luftspenntype
+        type: STRING
+        constraints:
+          codelist: LuftspennType
+          required: true
+      luftspennMerknad_farligspenn:
+        sourcePath: luftspennmerknad_farligspenn
+        type: BOOLEAN
+      luftspennMerknad_farligspennMerknad:
+        sourcePath: luftspennmerknad_farligspennmerknad
+        type: STRING
+      anleggsbredde:
+        sourcePath: anleggsbredde
+        type: FLOAT
+      beliggenhet:
+        sourcePath: beliggenhet
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+      harMast:
+        sourcePath: "[objid=nrlluftspennobjid]NrlLuftspenn_harMast/[nrlmastobjid=objid]nrlmast"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          minOccurrence: 0
+          maxOccurrence: 2
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: NrlMast-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: NrlMast-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/nrlmast/items/{{value}}"
+  nrlmast:
+    sourcePath: /nrlmast
+    type: OBJECT
+    objectType: NrlMast
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      mastType:
+        sourcePath: masttype
+        type: STRING
+        constraints:
+          codelist: MastType
+          required: true
+      horisontalAvstand:
+        sourcePath: horisontalavstand
+        type: FLOAT
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true
+      harLuftspenn:
+        sourcePath: "[objid=nrlmastobjid]NrlMast_harLuftspenn/[nrlluftspennobjid=objid]nrlluftspenn"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          minOccurrence: 0
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: NrlLuftspenn-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: NrlLuftspenn-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/nrlluftspenn/items/{{value}}"
+  nrlpunkt:
+    sourcePath: /nrlpunkt
+    type: OBJECT
+    objectType: NrlPunkt
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      punktType:
+        sourcePath: punkttype
+        type: STRING
+        constraints:
+          codelist: PunktType
+          required: true
+      horisontalAvstand:
+        sourcePath: horisontalavstand
+        type: FLOAT
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true

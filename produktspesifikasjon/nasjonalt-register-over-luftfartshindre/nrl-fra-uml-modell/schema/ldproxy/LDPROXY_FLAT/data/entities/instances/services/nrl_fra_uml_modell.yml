@@ -1,0 +1,27 @@
+---
+id: nrl_fra_uml_modell
+label: FIXME
+description: FIXME
+enabled: true
+serviceType: OGC_API
+collections:
+  nrlflate:
+    id: nrlflate
+    label: nrlflate
+    enabled: true
+  nrllinje:
+    id: nrllinje
+    label: nrllinje
+    enabled: true
+  nrlluftspenn:
+    id: nrlluftspenn
+    label: nrlluftspenn
+    enabled: true
+  nrlmast:
+    id: nrlmast
+    label: nrlmast
+    enabled: true
+  nrlpunkt:
+    id: nrlpunkt
+    label: nrlpunkt
+    enabled: true
