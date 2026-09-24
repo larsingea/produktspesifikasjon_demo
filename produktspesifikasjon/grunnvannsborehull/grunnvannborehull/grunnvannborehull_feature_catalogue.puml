@@ -1,0 +1,268 @@
+@startuml
+' For wide diagrams, render with: plantuml -DPLANTUML_LIMIT_SIZE=16384 ...
+' The 'scale max' directive below caps the rendered output to prevent the
+' default PlantUML 4096px size limit from cropping the diagram.
+scale max 4000*4000
+
+title Grunnvannsborehull - Grunnvannborehull - Objekttyper
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam wrapWidth 200
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "Objekttyper" {
+
+  class "BrønnPark" as Br_nnPark <<featureType>> {
+    + datauttaksdato [1..1] : DateTime
+    + brønnParkNr [1..1] : Integer
+    + brønnpOmrNavn [0..1] : CharacterString
+    + geolMedium [1..1] : GeolMedium
+    + antallEnergiBrønner [1..1] : Integer
+    + brønnpKommentar [0..1] : CharacterString
+    + brønnpVEffekt [0..1] : Integer
+    + brønnpVEnergi [0..1] : Integer
+    + brønnpKEffekt [0..1] : Integer
+    + brønnpKEnergi [0..1] : Integer
+    + brønnpFrikjøling [0..1] : CharacterString
+    + brønnpKollVæske [0..1] : BrønnpKollVæske
+    + energibrønn [0..1] : Link
+    + rapport-HTML [0..1] : Link
+    + rapport-JSON [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class "EnergiBrønn" as EnergiBr_nn <<featureType>> {
+    + datauttaksdato [1..1] : DateTime
+    + brønnNr [1..1] : Integer
+    + geolMedium [1..1] : GeolMedium
+    + stedfestelseMetodeInfo [1..1] : CharacterString
+    + oppdragstaker [1..1] : CharacterString
+    + brønnBrukOmfang [0..1] : BrønnBrukOmfang
+    + boreDato [0..1] : Date
+    + konsulentFirma [0..1] : CharacterString
+    + boretLengde [0..1] : Real
+    + boretLengdeTilBerg [0..1] : Real
+    + vannstandBorehull [0..1] : Real
+    + datoVannstandBorehull [0..1] : Date
+    + brønnHelningType [0..1] : BrønnHelningType
+    + diameterBorehull [0..1] : Integer
+    + boretHelningsgrad [0..1] : Integer
+    + boretAzimuth [0..1] : Integer
+    + materialForingsrør [0..1] : MaterialForingsrør
+    + lengdeForingsrør [0..1] : Real
+    + boretKapasitet [0..1] : Real
+    + kapasMålemet [0..1] : KapasMålemet
+    + kapasØkningType [0..1] : KapasØkningType
+    + øktKapasitet [0..1] : Real
+    + beskrivelse [0..1] : CharacterString
+    + brønnParkNr [0..1] : Integer
+    + brønnpark [0..1] : Link
+    + rapport-HTML [0..1] : Link
+    + rapport-JSON [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class "GrunnvannBrønn" as GrunnvannBr_nn <<featureType>> {
+    + datauttaksdato [1..1] : DateTime
+    + brønnNr [1..1] : Integer
+    + geolMedium [1..1] : GeolMedium
+    + stedfestelseMetodeInfo [1..1] : CharacterString
+    + oppdragstaker [1..1] : CharacterString
+    + brønnBrukOmfang [0..1] : BrønnBrukOmfang
+    + boreDato [0..1] : Date
+    + konsulentFirma [0..1] : CharacterString
+    + boretLengde [0..1] : Real
+    + boretLengdeTilBerg [0..1] : Real
+    + vannstandBorehull [0..1] : Real
+    + datoVannstandBorehull [0..1] : Date
+    + brønnHelningType [0..1] : BrønnHelningType
+    + diameterBorehull [0..1] : Integer
+    + boretHelningsgrad [0..1] : Integer
+    + boretAzimuth [0..1] : Integer
+    + materialForingsrør [0..1] : MaterialForingsrør
+    + lengdeForingsrør [0..1] : Real
+    + boretKapasitet [0..1] : Real
+    + kapasMålemet [0..1] : KapasMålemet
+    + kapasØkningType [0..1] : KapasØkningType
+    + øktKapasitet [0..1] : Real
+    + beskrivelse [0..1] : CharacterString
+    + rapport-HTML [0..1] : Link
+    + rapport-JSON [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class GrunnvannOppkomme <<featureType>> {
+    + datauttaksdato [1..1] : DateTime
+    + oppkomNr [1..1] : Integer
+    + geolMedium [1..1] : GeolMedium
+    + oppkomVannføring [0..1] : Real
+    + oppkomBruk [0..1] : OppkomBruk
+    + oppkomBrukOmfang [0..1] : OppkomBrukOmfang
+    + oppkomUtforming [0..1] : OppkomUtforming
+    + oppkomBeskyttelse [0..1] : OppkomBeskyttelse
+    + oppkomFareForurensing [0..1] : OppkomFareForurensing
+    + oppkomTypeForurensing [0..1] : OppkomTypeForurensing
+    + konsulentFirma [0..1] : CharacterString
+    + oppkomRegDato [0..1] : Date
+    + oppkomKommentar [0..1] : CharacterString
+    + stedfestelseMetodeInfo [0..1] : CharacterString
+    + rapport-HTML [0..1] : Link
+    + rapport-JSON [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class "LGNBrønn" as LGNBr_nn <<featureType>> {
+    + lgnBrønnNr [0..1] : CharacterString
+    + datauttaksdato [1..1] : DateTime
+    + brønnNr [1..1] : Integer
+    + geolMedium [1..1] : GeolMedium
+    + stedfestelseMetodeInfo [1..1] : CharacterString
+    + oppdragstaker [1..1] : CharacterString
+    + brønnBrukOmfang [0..1] : BrønnBrukOmfang
+    + boreDato [0..1] : Date
+    + konsulentFirma [0..1] : CharacterString
+    + boretLengde [0..1] : Real
+    + boretLengdeTilBerg [0..1] : Real
+    + vannstandBorehull [0..1] : Real
+    + datoVannstandBorehull [0..1] : Date
+    + brønnHelningType [0..1] : BrønnHelningType
+    + diameterBorehull [0..1] : Integer
+    + boretHelningsgrad [0..1] : Integer
+    + boretAzimuth [0..1] : Integer
+    + materialForingsrør [0..1] : MaterialForingsrør
+    + lengdeForingsrør [0..1] : Real
+    + boretKapasitet [0..1] : Real
+    + kapasMålemet [0..1] : KapasMålemet
+    + kapasØkningType [0..1] : KapasØkningType
+    + øktKapasitet [0..1] : Real
+    + beskrivelse [0..1] : CharacterString
+    + målePunktNr [1..1] : CharacterString
+    + måleFrekvens [0..1] : CharacterString
+    + driftStartMåling [0..1] : CharacterString
+    + driftStoppMåling [0..1] : CharacterString
+    + lgnNummer [1..1] : Integer
+    + referansepunkt [0..1] : Link
+    + rapport-HTML [0..1] : Link
+    + rapport-JSON [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class LGNGrunnvannOppkomme <<featureType>> {
+    + datauttaksdato [1..1] : DateTime
+    + oppkomNr [1..1] : Integer
+    + geolMedium [1..1] : GeolMedium
+    + oppkomVannføring [0..1] : Real
+    + oppkomBruk [0..1] : OppkomBruk
+    + oppkomBrukOmfang [0..1] : OppkomBrukOmfang
+    + oppkomUtforming [0..1] : OppkomUtforming
+    + oppkomBeskyttelse [0..1] : OppkomBeskyttelse
+    + oppkomFareForurensing [0..1] : OppkomFareForurensing
+    + konsulentFirma [0..1] : CharacterString
+    + oppkomRegDato [0..1] : Date
+    + oppkomKommentar [0..1] : CharacterString
+    + stedfestelseMetodeInfo [0..1] : CharacterString
+    + målePunktNr [1..1] : CharacterString
+    + måleFrekvens [0..1] : CharacterString
+    + driftStartMåling [0..1] : CharacterString
+    + driftStoppMåling [0..1] : CharacterString
+    + lgnNummer [1..1] : Integer
+    + referansepunkt [0..1] : Link
+    + rapport-HTML [0..1] : Link
+    + rapport-JSON [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class "LGNOmrådeRefPkt" as LGNOmr_deRefPkt <<featureType>> {
+    + datauttaksdato [1..1] : DateTime
+    + antallBrønnerKilder [1..*] : Sequence
+    + geolMedium [0..1] : GeolMedium
+    + posisjonHøyde [0..1] : CharacterString
+    + lgnNummer [1..1] : Integer
+    + nveNummer [0..1] : CharacterString
+    + lgnOmrNavn [0..1] : CharacterString
+    + akviferType [0..1] : AkviferType
+    + omrEtableringDato [0..1] : CharacterString
+    + nedbørÅrMin [0..1] : Integer
+    + nedbørÅrMid [0..1] : Integer
+    + nedbørÅrMaks [0..1] : Integer
+    + tempÅrMiddel [0..1] : Integer
+    + navnPåVassdrag [0..1] : CharacterString
+    + vassdragsnummer [0..1] : CharacterString
+    + kommentar [0..1] : CharacterString
+    + lgngrunnvannoppkomme [0..1] : Link
+    + lgnbrønn [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class Sonderboring <<featureType>> {
+    + datauttaksdato [1..1] : DateTime
+    + brønnNr [1..1] : Integer
+    + geolMedium [1..1] : GeolMedium
+    + stedfestelseMetodeInfo [1..1] : CharacterString
+    + oppdragstaker [1..1] : CharacterString
+    + brønnBrukOmfang [0..1] : BrønnBrukOmfang
+    + boreDato [0..1] : Date
+    + konsulentFirma [0..1] : CharacterString
+    + boretLengde [0..1] : Real
+    + boretLengdeTilBerg [0..1] : Real
+    + vannstandBorehull [0..1] : Real
+    + datoVannstandBorehull [0..1] : Date
+    + brønnHelningType [0..1] : BrønnHelningType
+    + diameterBorehull [0..1] : Integer
+    + boretHelningsgrad [0..1] : Integer
+    + boretAzimuth [0..1] : Integer
+    + materialForingsrør [0..1] : MaterialForingsrør
+    + lengdeForingsrør [0..1] : Real
+    + boretKapasitet [0..1] : Real
+    + kapasMålemet [0..1] : KapasMålemet
+    + kapasØkningType [0..1] : KapasØkningType
+    + øktKapasitet [0..1] : Real
+    + beskrivelse [0..1] : CharacterString
+    + rapport-HTML [0..1] : Link
+    + rapport-JSON [0..1] : Link
+
+    ..Geometri..
+    + geometry [1] : GM_Point
+  }
+
+  class Link <<dataType>> {
+    + href [0..1] : uri-reference (string)
+    + rel [0..1] : CharacterString
+    + type [0..1] : CharacterString
+    + title [0..1] : CharacterString
+  }
+}
+
+@enduml
