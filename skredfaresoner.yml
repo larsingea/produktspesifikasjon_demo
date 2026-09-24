@@ -1,0 +1,9 @@
+metadataId: b2d5aaf8-79ac-40f3-9cd6-fdc30bc42ea1
+output_directory: produktspesifikasjon
+product_slug: skredfaresoner
+updated: '2026-09-24'
+scopes:
+- name: Skredfaresoner_SOSI_UML
+  url: https://sosi.geonorge.no/svn/SOSI/SOSI%20Del%203/Norges%20vassdrags-%20og%20energidirektorat/Skredfareomr%c3%a5der_1.3.xml
+  generator: xmi
+  description: Datamodell fra SOSI UML
