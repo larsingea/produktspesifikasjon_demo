@@ -1,0 +1,2673 @@
+[
+  {
+    "name": "BrønnPark",
+    "description": "Anlegg for uttak og/eller deponering av grunnvarme. Anlegg må ha tilsluttet minst fem energibrønner for å falle inn under NGUs definisjon av \"Brønnpark\".",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "brønnParkNr",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Brønnparknummer  i NGUs database",
+        "ogcRole": "id"
+      },
+      {
+        "name": "brønnpOmrNavn",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Lokalt stedsnavn der brønnparken ligger."
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "1..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).\r\n<br/>I dette tilfellet definerer den om brønnpark er basert på boringer kun i løsmasse (vanligvis for oppumping av varmt grunnvann) eller også er  boret videre ned i berggrunn (vanligvis varmeuttak via kollektorslanger).",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "antallEnergiBrønner",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Beskriver antall energibrønner i brønnparken (minimum 5 for å defineres som brønnpark)"
+      },
+      {
+        "name": "brønnpKommentar",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Brønnboreres kommentarer om brønnparken"
+      },
+      {
+        "name": "brønnpVEffekt",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Brønnparkens maksimale varmeeffekt i kW"
+      },
+      {
+        "name": "brønnpVEnergi",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Brønnparkens maksimale varmeenergi i kWh/år"
+      },
+      {
+        "name": "brønnpKEffekt",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Brønnparkens maksimale kjøleeffekt i kW"
+      },
+      {
+        "name": "brønnpKEnergi",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Brønnparkens maksimale kjøleeffekt i kWh/år"
+      },
+      {
+        "name": "brønnpFrikjøling",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Beskriver om brønnparken benyttes til frikjøling (ja/nei)"
+      },
+      {
+        "name": "brønnpKollVæske",
+        "type": "BrønnpKollVæske",
+        "cardinality": "0..1",
+        "description": "Beskriver type kollektorvæske (Metanol osv)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Etanol",
+              "label": "Etanol"
+            },
+            {
+              "value": "Etylenglykol",
+              "label": "Etylenglykol"
+            },
+            {
+              "value": "Kaliumformiat",
+              "label": "Kaliumformiat"
+            },
+            {
+              "value": "Kaliumklorid",
+              "label": "Kaliumklorid"
+            },
+            {
+              "value": "Metanol",
+              "label": "Metanol"
+            },
+            {
+              "value": "Propylenglykol",
+              "label": "Propylenglykol"
+            },
+            {
+              "value": "Vann",
+              "label": "Vann"
+            }
+          ]
+        }
+      },
+      {
+        "name": "energibrønn",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-HTML",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-JSON",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "EnergiBrønn",
+    "description": "Grunnvannborehull som helt eller delvis er dedikert for uttak eller deponering av grunnvarme, enten gjennom kollektorslanger eller pumping av grunnvann hvis temperatur benyttes til oppvarming eller avkjøling.",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "brønnNr",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Brønnummer i NGUs database",
+        "ogcRole": "id"
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "1..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "stedfestelseMetodeInfo",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Stedfestelsesmetode, for eksempel GPS, kart med flere. Fram til ca 2000 finnes en del registreringer som avviker betydelig fra brønnhullets reelle koordinater."
+      },
+      {
+        "name": "oppdragstaker",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Navn på borefirma som har utført boringen"
+      },
+      {
+        "name": "brønnBrukOmfang",
+        "type": "BrønnBrukOmfang",
+        "cardinality": "0..1",
+        "description": "Hvor omfattende vannforsyningen er (til enkelthusholdning, gårdsbruk osv.)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Annen industri",
+              "label": "Annen industri"
+            },
+            {
+              "value": "Enkelthusholdning",
+              "label": "Enkelthusholdning"
+            },
+            {
+              "value": "Forskning",
+              "label": "Forskning"
+            },
+            {
+              "value": "Gårdsbruk",
+              "label": "Gårdsbruk"
+            },
+            {
+              "value": "Hytte/fritidsbolig",
+              "label": "Hytte/fritidsbolig"
+            },
+            {
+              "value": "Miljøundersøkelser/overvåkning",
+              "label": "Miljøundersøkelser/overvåkning"
+            },
+            {
+              "value": "Næringsmiddelproduksjon",
+              "label": "Næringsmiddelproduksjon"
+            },
+            {
+              "value": "Større anlegg",
+              "label": "Større anlegg"
+            },
+            {
+              "value": "Turistnæring",
+              "label": "Turistnæring"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse for energibrønn/anlegg",
+              "label": "Undersøkelse for energibrønn/anlegg"
+            },
+            {
+              "value": "Undersøkelse for vannforsyning",
+              "label": "Undersøkelse for vannforsyning"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            },
+            {
+              "value": "Vanningsanlegg",
+              "label": "Vanningsanlegg"
+            },
+            {
+              "value": "Vannverk",
+              "label": "Vannverk"
+            }
+          ]
+        }
+      },
+      {
+        "name": "boreDato",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for boringen"
+      },
+      {
+        "name": "konsulentFirma",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Konsulentfirma, som for eksempel har valgt ut borelokalitet, eller som har utredet aspekter ved bruk av brønnen."
+      },
+      {
+        "name": "boretLengde",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Total lengde av borehullets forløp, tilsvarer dyp ved vertikal boring"
+      },
+      {
+        "name": "boretLengdeTilBerg",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Dybde til berg som ikke er målt men basert på tolkning"
+      },
+      {
+        "name": "vannstandBorehull",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Stabil vannstand etter boring målt fra overflaten i meter."
+      },
+      {
+        "name": "datoVannstandBorehull",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for når vannstand etter boring er målt  (før eventuell kapasitetsøkning)."
+      },
+      {
+        "name": "brønnHelningType",
+        "type": "BrønnHelningType",
+        "cardinality": "0..1",
+        "description": "Hvilken type helning borehullet kan ha (grovinndeling)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Horisontal",
+              "label": "Horisontal"
+            },
+            {
+              "value": "Loddrett",
+              "label": "Loddrett"
+            },
+            {
+              "value": "Skrå",
+              "label": "Skrå"
+            }
+          ]
+        }
+      },
+      {
+        "name": "diameterBorehull",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets diameter målt i millimeter. For fjellbrønner oppgis dominerende diameter på borhullet nedenfor foringsrørets avslutning."
+      },
+      {
+        "name": "boretHelningsgrad",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets hellning målt som avvik i grader fra loddlinje"
+      },
+      {
+        "name": "boretAzimuth",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Helning hvor  90 grader er vertikalt , 0 grader er horisontalt"
+      },
+      {
+        "name": "materialForingsrør",
+        "type": "MaterialForingsrør",
+        "cardinality": "0..1",
+        "description": "Foringsrørets materialtype",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Damprør",
+              "label": "Damprør"
+            },
+            {
+              "value": "PE",
+              "label": "PE"
+            },
+            {
+              "value": "PVC",
+              "label": "PVC"
+            },
+            {
+              "value": "Plast",
+              "label": "Plast"
+            },
+            {
+              "value": "Rustfritt stål",
+              "label": "Rustfritt stål"
+            },
+            {
+              "value": "Stål",
+              "label": "Stål"
+            }
+          ]
+        }
+      },
+      {
+        "name": "lengdeForingsrør",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Foringsrørets lengde i meter"
+      },
+      {
+        "name": "boretKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time før eventuell kapsitetsøkende trykking eller sprengning. Vanligvis målt nokså usikkert av boreren i forbindelse med selve boringen."
+      },
+      {
+        "name": "kapasMålemet",
+        "type": "KapasMålemet",
+        "cardinality": "0..1",
+        "description": "Beskriver målemetode brukt for å måle brønnens kapasitet (vanngiverevne). Hvis brønnen senere er trykket eller sprengt for å øke kapasiteten,  oppgis her den målemetoden som er brukt FØR denne kapasitetsøkningen.",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Blåsing",
+              "label": "Blåsing"
+            },
+            {
+              "value": "Prøvepumping",
+              "label": "Prøvepumping"
+            },
+            {
+              "value": "Stigningstest",
+              "label": "Stigningstest"
+            }
+          ]
+        }
+      },
+      {
+        "name": "kapasØkningType",
+        "type": "KapasØkningType",
+        "cardinality": "0..1",
+        "description": "Beskriver om brønnen er sprengt eller trykket for å øke kapasiteten",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Sprengning",
+              "label": "Sprengning"
+            },
+            {
+              "value": "Trykking",
+              "label": "Trykking"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            }
+          ]
+        }
+      },
+      {
+        "name": "øktKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time målt etter eventuell kapsitetsøkende trykking eller sprengning."
+      },
+      {
+        "name": "beskrivelse",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Forklaring til objektet og undersøkelser utført på lokaliteten.\r\nBrønnborers generelle kommentarer til boringen, gitt på brønnskjema"
+      },
+      {
+        "name": "brønnParkNr",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Brønnparknummer  i NGUs databaser"
+      },
+      {
+        "name": "brønnpark",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-HTML",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-JSON",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "GrunnvannBrønn",
+    "description": "Boret brønn for uttak av grunnvann til vannforsyning",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "brønnNr",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Brønnummer i NGUs database",
+        "ogcRole": "id"
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "1..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "stedfestelseMetodeInfo",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Stedfestelsesmetode, for eksempel GPS, kart med flere. Fram til ca 2000 finnes en del registreringer som avviker betydelig fra brønnhullets reelle koordinater."
+      },
+      {
+        "name": "oppdragstaker",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Navn på borefirma som har utført boringen"
+      },
+      {
+        "name": "brønnBrukOmfang",
+        "type": "BrønnBrukOmfang",
+        "cardinality": "0..1",
+        "description": "Hvor omfattende vannforsyningen er (til enkelthusholdning, gårdsbruk osv.)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Annen industri",
+              "label": "Annen industri"
+            },
+            {
+              "value": "Enkelthusholdning",
+              "label": "Enkelthusholdning"
+            },
+            {
+              "value": "Forskning",
+              "label": "Forskning"
+            },
+            {
+              "value": "Gårdsbruk",
+              "label": "Gårdsbruk"
+            },
+            {
+              "value": "Hytte/fritidsbolig",
+              "label": "Hytte/fritidsbolig"
+            },
+            {
+              "value": "Miljøundersøkelser/overvåkning",
+              "label": "Miljøundersøkelser/overvåkning"
+            },
+            {
+              "value": "Næringsmiddelproduksjon",
+              "label": "Næringsmiddelproduksjon"
+            },
+            {
+              "value": "Større anlegg",
+              "label": "Større anlegg"
+            },
+            {
+              "value": "Turistnæring",
+              "label": "Turistnæring"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse for energibrønn/anlegg",
+              "label": "Undersøkelse for energibrønn/anlegg"
+            },
+            {
+              "value": "Undersøkelse for vannforsyning",
+              "label": "Undersøkelse for vannforsyning"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            },
+            {
+              "value": "Vanningsanlegg",
+              "label": "Vanningsanlegg"
+            },
+            {
+              "value": "Vannverk",
+              "label": "Vannverk"
+            }
+          ]
+        }
+      },
+      {
+        "name": "boreDato",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for boringen"
+      },
+      {
+        "name": "konsulentFirma",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Konsulentfirma, som for eksempel har valgt ut borelokalitet, eller som har utredet aspekter ved bruk av brønnen."
+      },
+      {
+        "name": "boretLengde",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Total lengde av borehullets forløp, tilsvarer dyp ved vertikal boring"
+      },
+      {
+        "name": "boretLengdeTilBerg",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Dybde til berg som ikke er målt men basert på tolkning"
+      },
+      {
+        "name": "vannstandBorehull",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Stabil vannstand etter boring målt fra overflaten i meter."
+      },
+      {
+        "name": "datoVannstandBorehull",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for når vannstand etter boring er målt  (før eventuell kapasitetsøkning)."
+      },
+      {
+        "name": "brønnHelningType",
+        "type": "BrønnHelningType",
+        "cardinality": "0..1",
+        "description": "Hvilken type helning borehullet kan ha (grovinndeling)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Horisontal",
+              "label": "Horisontal"
+            },
+            {
+              "value": "Loddrett",
+              "label": "Loddrett"
+            },
+            {
+              "value": "Skrå",
+              "label": "Skrå"
+            }
+          ]
+        }
+      },
+      {
+        "name": "diameterBorehull",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets diameter målt i millimeter. For fjellbrønner oppgis dominerende diameter på borhullet nedenfor foringsrørets avslutning."
+      },
+      {
+        "name": "boretHelningsgrad",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets hellning målt som avvik i grader fra loddlinje"
+      },
+      {
+        "name": "boretAzimuth",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Helning hvor  90 grader er vertikalt , 0 grader er horisontalt"
+      },
+      {
+        "name": "materialForingsrør",
+        "type": "MaterialForingsrør",
+        "cardinality": "0..1",
+        "description": "Foringsrørets materialtype",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Damprør",
+              "label": "Damprør"
+            },
+            {
+              "value": "PE",
+              "label": "PE"
+            },
+            {
+              "value": "PVC",
+              "label": "PVC"
+            },
+            {
+              "value": "Plast",
+              "label": "Plast"
+            },
+            {
+              "value": "Rustfritt stål",
+              "label": "Rustfritt stål"
+            },
+            {
+              "value": "Stål",
+              "label": "Stål"
+            }
+          ]
+        }
+      },
+      {
+        "name": "lengdeForingsrør",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Foringsrørets lengde i meter"
+      },
+      {
+        "name": "boretKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time før eventuell kapsitetsøkende trykking eller sprengning. Vanligvis målt nokså usikkert av boreren i forbindelse med selve boringen."
+      },
+      {
+        "name": "kapasMålemet",
+        "type": "KapasMålemet",
+        "cardinality": "0..1",
+        "description": "Beskriver målemetode brukt for å måle brønnens kapasitet (vanngiverevne). Hvis brønnen senere er trykket eller sprengt for å øke kapasiteten,  oppgis her den målemetoden som er brukt FØR denne kapasitetsøkningen.",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Blåsing",
+              "label": "Blåsing"
+            },
+            {
+              "value": "Prøvepumping",
+              "label": "Prøvepumping"
+            },
+            {
+              "value": "Stigningstest",
+              "label": "Stigningstest"
+            }
+          ]
+        }
+      },
+      {
+        "name": "kapasØkningType",
+        "type": "KapasØkningType",
+        "cardinality": "0..1",
+        "description": "Beskriver om brønnen er sprengt eller trykket for å øke kapasiteten",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Sprengning",
+              "label": "Sprengning"
+            },
+            {
+              "value": "Trykking",
+              "label": "Trykking"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            }
+          ]
+        }
+      },
+      {
+        "name": "øktKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time målt etter eventuell kapsitetsøkende trykking eller sprengning."
+      },
+      {
+        "name": "beskrivelse",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Forklaring til objektet og undersøkelser utført på lokaliteten.\r\nBrønnborers generelle kommentarer til boringen, gitt på brønnskjema"
+      },
+      {
+        "name": "rapport-HTML",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-JSON",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "GrunnvannOppkomme",
+    "description": "Forekomst av oppkomme/kilde/ naturlig utstrømmende grunnvann",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "oppkomNr",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Oppkommets nummer i Nasjonal Grunnvannsdatabase",
+        "ogcRole": "id"
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "1..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).\r\n<br/>I dette tilfellet definerer den om et oppkommet forekommer i løsmasse eller i fjell",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomVannføring",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Oppkommets vanngiverevne målt i liter/time målt ved registrering. (vil variere)"
+      },
+      {
+        "name": "oppkomBruk",
+        "type": "OppkomBruk",
+        "cardinality": "0..1",
+        "description": "Overordnet bruksområde for naturlig oppkomme (kilde)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse",
+              "label": "Undersøkelse"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomBrukOmfang",
+        "type": "OppkomBrukOmfang",
+        "cardinality": "0..1",
+        "description": "Underordnet bruksområde (til enkelthusholdning, gårdsbruk osv.)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Annen industri",
+              "label": "Annen industri"
+            },
+            {
+              "value": "Enkelthusholdning",
+              "label": "Enkelthusholdning"
+            },
+            {
+              "value": "Forskning",
+              "label": "Forskning"
+            },
+            {
+              "value": "Gårdsbruk",
+              "label": "Gårdsbruk"
+            },
+            {
+              "value": "Hytte/fritidsbolig",
+              "label": "Hytte/fritidsbolig"
+            },
+            {
+              "value": "Miljøundersøkelser/overvåkning",
+              "label": "Miljøundersøkelser/overvåkning"
+            },
+            {
+              "value": "Næringsmiddelproduksjon",
+              "label": "Næringsmiddelproduksjon"
+            },
+            {
+              "value": "Større anlegg",
+              "label": "Større anlegg"
+            },
+            {
+              "value": "Turistnæring",
+              "label": "Turistnæring"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse for energibrønn/anlegg",
+              "label": "Undersøkelse for energibrønn/anlegg"
+            },
+            {
+              "value": "Undersøkelse for vannforsyning",
+              "label": "Undersøkelse for vannforsyning"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            },
+            {
+              "value": "Vanningsanlegg",
+              "label": "Vanningsanlegg"
+            },
+            {
+              "value": "Vannverk",
+              "label": "Vannverk"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomUtforming",
+        "type": "OppkomUtforming",
+        "cardinality": "0..1",
+        "description": "Beskriver om oppkomme er naturlig uten inngrep, eller lagt i rør/kum",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Kum",
+              "label": "Kum"
+            },
+            {
+              "value": "Naturlig",
+              "label": "Naturlig"
+            },
+            {
+              "value": "Rør",
+              "label": "Rør"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomBeskyttelse",
+        "type": "OppkomBeskyttelse",
+        "cardinality": "0..1",
+        "description": "Beskriver hvordan oppkommet evnt er besyttet (drenering, gjerde, overbygg)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Drensledning/-grøft",
+              "label": "Drensledning/-grøft"
+            },
+            {
+              "value": "Gjerde",
+              "label": "Gjerde"
+            },
+            {
+              "value": "Overbygg",
+              "label": "Overbygg"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomFareForurensing",
+        "type": "OppkomFareForurensing",
+        "cardinality": "0..1",
+        "description": "Inndeler forurensningsfaren for oppkommet til liten/middels/stor",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Liten",
+              "label": "Liten"
+            },
+            {
+              "value": "Middels",
+              "label": "Middels"
+            },
+            {
+              "value": "Stor",
+              "label": "Stor"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomTypeForurensing",
+        "type": "OppkomTypeForurensing",
+        "cardinality": "0..1",
+        "description": "Definerer om eventuell forurensningsfare stammer fra bebyggelse, industri, jordbruk etc",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Annen",
+              "label": "Annen"
+            },
+            {
+              "value": "Bebyggelse",
+              "label": "Bebyggelse"
+            },
+            {
+              "value": "Beitemark",
+              "label": "Beitemark"
+            },
+            {
+              "value": "Industri",
+              "label": "Industri"
+            },
+            {
+              "value": "Jordbruk",
+              "label": "Jordbruk"
+            }
+          ]
+        }
+      },
+      {
+        "name": "konsulentFirma",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Navn på konsulentfirma som evnt har utredet kilden/oppkommet."
+      },
+      {
+        "name": "oppkomRegDato",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato når oppkomme ble registrert"
+      },
+      {
+        "name": "oppkomKommentar",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Beskriver formål, historikk, referanser og kontakt"
+      },
+      {
+        "name": "stedfestelseMetodeInfo",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Metoden brukt for å stedfeste lokaliteten"
+      },
+      {
+        "name": "rapport-HTML",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-JSON",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "LGNBrønn",
+    "description": "Brønn som benyttes eller har vært benyttet under monitorering av upåvirkede grunnvannsakviferer (\"Landsomfattende grunnvannsnett - LGN\" -http://www.grunnvann.no/overvaking_eks.php)",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "lgnBrønnNr",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "lgnBrønnNr",
+        "ogcRole": "id"
+      },
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "brønnNr",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Brønnummer i NGUs database"
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "1..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "stedfestelseMetodeInfo",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Stedfestelsesmetode, for eksempel GPS, kart med flere. Fram til ca 2000 finnes en del registreringer som avviker betydelig fra brønnhullets reelle koordinater."
+      },
+      {
+        "name": "oppdragstaker",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Navn på borefirma som har utført boringen"
+      },
+      {
+        "name": "brønnBrukOmfang",
+        "type": "BrønnBrukOmfang",
+        "cardinality": "0..1",
+        "description": "Hvor omfattende vannforsyningen er (til enkelthusholdning, gårdsbruk osv.)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Annen industri",
+              "label": "Annen industri"
+            },
+            {
+              "value": "Enkelthusholdning",
+              "label": "Enkelthusholdning"
+            },
+            {
+              "value": "Forskning",
+              "label": "Forskning"
+            },
+            {
+              "value": "Gårdsbruk",
+              "label": "Gårdsbruk"
+            },
+            {
+              "value": "Hytte/fritidsbolig",
+              "label": "Hytte/fritidsbolig"
+            },
+            {
+              "value": "Miljøundersøkelser/overvåkning",
+              "label": "Miljøundersøkelser/overvåkning"
+            },
+            {
+              "value": "Næringsmiddelproduksjon",
+              "label": "Næringsmiddelproduksjon"
+            },
+            {
+              "value": "Større anlegg",
+              "label": "Større anlegg"
+            },
+            {
+              "value": "Turistnæring",
+              "label": "Turistnæring"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse for energibrønn/anlegg",
+              "label": "Undersøkelse for energibrønn/anlegg"
+            },
+            {
+              "value": "Undersøkelse for vannforsyning",
+              "label": "Undersøkelse for vannforsyning"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            },
+            {
+              "value": "Vanningsanlegg",
+              "label": "Vanningsanlegg"
+            },
+            {
+              "value": "Vannverk",
+              "label": "Vannverk"
+            }
+          ]
+        }
+      },
+      {
+        "name": "boreDato",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for boringen"
+      },
+      {
+        "name": "konsulentFirma",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Konsulentfirma, som for eksempel har valgt ut borelokalitet, eller som har utredet aspekter ved bruk av brønnen."
+      },
+      {
+        "name": "boretLengde",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Total lengde av borehullets forløp, tilsvarer dyp ved vertikal boring"
+      },
+      {
+        "name": "boretLengdeTilBerg",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Dybde til berg som ikke er målt men basert på tolkning"
+      },
+      {
+        "name": "vannstandBorehull",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Stabil vannstand etter boring målt fra overflaten i meter."
+      },
+      {
+        "name": "datoVannstandBorehull",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for når vannstand etter boring er målt  (før eventuell kapasitetsøkning)."
+      },
+      {
+        "name": "brønnHelningType",
+        "type": "BrønnHelningType",
+        "cardinality": "0..1",
+        "description": "Hvilken type helning borehullet kan ha (grovinndeling)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Horisontal",
+              "label": "Horisontal"
+            },
+            {
+              "value": "Loddrett",
+              "label": "Loddrett"
+            },
+            {
+              "value": "Skrå",
+              "label": "Skrå"
+            }
+          ]
+        }
+      },
+      {
+        "name": "diameterBorehull",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets diameter målt i millimeter. For fjellbrønner oppgis dominerende diameter på borhullet nedenfor foringsrørets avslutning."
+      },
+      {
+        "name": "boretHelningsgrad",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets hellning målt som avvik i grader fra loddlinje"
+      },
+      {
+        "name": "boretAzimuth",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Helning hvor  90 grader er vertikalt , 0 grader er horisontalt"
+      },
+      {
+        "name": "materialForingsrør",
+        "type": "MaterialForingsrør",
+        "cardinality": "0..1",
+        "description": "Foringsrørets materialtype",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Damprør",
+              "label": "Damprør"
+            },
+            {
+              "value": "PE",
+              "label": "PE"
+            },
+            {
+              "value": "PVC",
+              "label": "PVC"
+            },
+            {
+              "value": "Plast",
+              "label": "Plast"
+            },
+            {
+              "value": "Rustfritt stål",
+              "label": "Rustfritt stål"
+            },
+            {
+              "value": "Stål",
+              "label": "Stål"
+            }
+          ]
+        }
+      },
+      {
+        "name": "lengdeForingsrør",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Foringsrørets lengde i meter"
+      },
+      {
+        "name": "boretKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time før eventuell kapsitetsøkende trykking eller sprengning. Vanligvis målt nokså usikkert av boreren i forbindelse med selve boringen."
+      },
+      {
+        "name": "kapasMålemet",
+        "type": "KapasMålemet",
+        "cardinality": "0..1",
+        "description": "Beskriver målemetode brukt for å måle brønnens kapasitet (vanngiverevne). Hvis brønnen senere er trykket eller sprengt for å øke kapasiteten,  oppgis her den målemetoden som er brukt FØR denne kapasitetsøkningen.",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Blåsing",
+              "label": "Blåsing"
+            },
+            {
+              "value": "Prøvepumping",
+              "label": "Prøvepumping"
+            },
+            {
+              "value": "Stigningstest",
+              "label": "Stigningstest"
+            }
+          ]
+        }
+      },
+      {
+        "name": "kapasØkningType",
+        "type": "KapasØkningType",
+        "cardinality": "0..1",
+        "description": "Beskriver om brønnen er sprengt eller trykket for å øke kapasiteten",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Sprengning",
+              "label": "Sprengning"
+            },
+            {
+              "value": "Trykking",
+              "label": "Trykking"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            }
+          ]
+        }
+      },
+      {
+        "name": "øktKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time målt etter eventuell kapsitetsøkende trykking eller sprengning."
+      },
+      {
+        "name": "beskrivelse",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Forklaring til objektet og undersøkelser utført på lokaliteten.\r\nBrønnborers generelle kommentarer til boringen, gitt på brønnskjema"
+      },
+      {
+        "name": "målePunktNr",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Merking av observasjonspunkter (brønner og oppkommer) som forekommer i et LGNområde (LGN overvåkingsstasjon).<br/>En slags merkelapp/nummerering, men som også kan inneholde bokstaver. Tallverdier over 50 representerer oppkommer."
+      },
+      {
+        "name": "måleFrekvens",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Hvor hyppig det blir utført målinger/ kjemiske analyser"
+      },
+      {
+        "name": "driftStartMåling",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Startmåned/år for innsamling av kjemiske data"
+      },
+      {
+        "name": "driftStoppMåling",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Sluttmåned/år for innsamling av kjemiske analyser"
+      },
+      {
+        "name": "lgnNummer",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Angir NGUs stasjonsnummer i overvåkningsprogrammet \"Landsomfattende grunnvannsnett\" (LGN)"
+      },
+      {
+        "name": "referansepunkt",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-HTML",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-JSON",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "LGNGrunnvannOppkomme",
+    "description": "Forekomst av oppkomme/ naturlig utstrømmende grunnvann som benyttes eller har vært benyttet under monitorering av upåvirkede grunnvannsakviferer (\"Landsomfattende grunnvannsnett - LGN\" -http://www.grunnvann.no/overvaking_eks.php)",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "oppkomNr",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Oppkommets nummer i Nasjonal Grunnvannsdatabase",
+        "ogcRole": "id"
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "1..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).\r\n<br/>I dette tilfellet definerer den om et oppkommet forekommer i løsmasse eller i fjell",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomVannføring",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Oppkommets vanngiverevne målt i liter/time målt ved registrering. (vil variere)"
+      },
+      {
+        "name": "oppkomBruk",
+        "type": "OppkomBruk",
+        "cardinality": "0..1",
+        "description": "Overordnet bruksområde for naturlig oppkomme (kilde)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse",
+              "label": "Undersøkelse"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomBrukOmfang",
+        "type": "OppkomBrukOmfang",
+        "cardinality": "0..1",
+        "description": "Underordnet bruksområde (til enkelthusholdning, gårdsbruk osv.)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Annen industri",
+              "label": "Annen industri"
+            },
+            {
+              "value": "Enkelthusholdning",
+              "label": "Enkelthusholdning"
+            },
+            {
+              "value": "Forskning",
+              "label": "Forskning"
+            },
+            {
+              "value": "Gårdsbruk",
+              "label": "Gårdsbruk"
+            },
+            {
+              "value": "Hytte/fritidsbolig",
+              "label": "Hytte/fritidsbolig"
+            },
+            {
+              "value": "Miljøundersøkelser/overvåkning",
+              "label": "Miljøundersøkelser/overvåkning"
+            },
+            {
+              "value": "Næringsmiddelproduksjon",
+              "label": "Næringsmiddelproduksjon"
+            },
+            {
+              "value": "Større anlegg",
+              "label": "Større anlegg"
+            },
+            {
+              "value": "Turistnæring",
+              "label": "Turistnæring"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse for energibrønn/anlegg",
+              "label": "Undersøkelse for energibrønn/anlegg"
+            },
+            {
+              "value": "Undersøkelse for vannforsyning",
+              "label": "Undersøkelse for vannforsyning"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            },
+            {
+              "value": "Vanningsanlegg",
+              "label": "Vanningsanlegg"
+            },
+            {
+              "value": "Vannverk",
+              "label": "Vannverk"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomUtforming",
+        "type": "OppkomUtforming",
+        "cardinality": "0..1",
+        "description": "Beskriver om oppkomme er naturlig uten inngrep, eller lagt i rør/kum",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Kum",
+              "label": "Kum"
+            },
+            {
+              "value": "Naturlig",
+              "label": "Naturlig"
+            },
+            {
+              "value": "Rør",
+              "label": "Rør"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomBeskyttelse",
+        "type": "OppkomBeskyttelse",
+        "cardinality": "0..1",
+        "description": "Beskriver hvordan oppkommet evnt er besyttet (drenering, gjerde, overbygg)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Drensledning/-grøft",
+              "label": "Drensledning/-grøft"
+            },
+            {
+              "value": "Gjerde",
+              "label": "Gjerde"
+            },
+            {
+              "value": "Overbygg",
+              "label": "Overbygg"
+            }
+          ]
+        }
+      },
+      {
+        "name": "oppkomFareForurensing",
+        "type": "OppkomFareForurensing",
+        "cardinality": "0..1",
+        "description": "Inndeler forurensningsfaren for oppkommet til liten/middels/stor",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Liten",
+              "label": "Liten"
+            },
+            {
+              "value": "Middels",
+              "label": "Middels"
+            },
+            {
+              "value": "Stor",
+              "label": "Stor"
+            }
+          ]
+        }
+      },
+      {
+        "name": "konsulentFirma",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Navn på konsulentfirma som evnt har utredet kilden/oppkommet."
+      },
+      {
+        "name": "oppkomRegDato",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato når oppkomme ble registrert"
+      },
+      {
+        "name": "oppkomKommentar",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Beskriver formål, historikk, referanser og kontakt"
+      },
+      {
+        "name": "stedfestelseMetodeInfo",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Metoden brukt for å stedfeste lokaliteten"
+      },
+      {
+        "name": "målePunktNr",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Merking av observasjonspunkter (brønner og oppkommer) som forekommer i et LGNområde (LGN overvåkingsstasjon).<br/>En slags merkelapp/nummerering, men som også kan inneholde bokstaver. Tallverdier over 50 representerer oppkommer."
+      },
+      {
+        "name": "måleFrekvens",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Hvor hyppig det utføres målinger/kjemiske analyser"
+      },
+      {
+        "name": "driftStartMåling",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Startmåned/år for innsamling av kjemiske data"
+      },
+      {
+        "name": "driftStoppMåling",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Sluttmåned/år for innsamling av kjemiske analyser"
+      },
+      {
+        "name": "lgnNummer",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Angir NGUs stasjonsnummer i overvåkningsprogrammet \"Landsomfattende grunnvannsnett\" (LGN)"
+      },
+      {
+        "name": "referansepunkt",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-HTML",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-JSON",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "LGNOmrådeRefPkt",
+    "description": "Cirka plassert senterpunkt i lokalt \"LGN-område\" bestående av en eller flere brønner/oppkommer som benyttes eller har vært benyttet under monitorering av upåvirkede grunnvannsakviferer (\"Landsomfattende grunnvannsnett - LGN\" -http://www.grunnvann.no/overvaking_eks.php)",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "antallBrønnerKilder",
+        "type": "array",
+        "cardinality": "1..*",
+        "description": "Antall brønner og kilder i LGNområdet"
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "0..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).\r\n<br/>I dette tilfellet definerer den om LGN-området består av løsmassebrønner eller fjellbrønner",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "posisjonHøyde",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "LGN områdets høyde over havet målt i meter"
+      },
+      {
+        "name": "lgnNummer",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Angir NGUs stasjonsnummer i overvåkningsprogrammet \"Landsomfattende grunnvannsnett\" (LGN)",
+        "ogcRole": "id"
+      },
+      {
+        "name": "nveNummer",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Angir NVEs stasjonsnummer i overvåkningsprogrammet \"Landsomfattende grunnvannsnett\" (LGN)"
+      },
+      {
+        "name": "lgnOmrNavn",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Stasjonsnavn i overvåkningsprogrammet \"Landsomfattende grunnvannsnett\" (LGN)"
+      },
+      {
+        "name": "akviferType",
+        "type": "AkviferType",
+        "cardinality": "0..1",
+        "description": "Beskriver akvifertype i LGN-området.",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Artesisk",
+              "label": "Artesisk"
+            },
+            {
+              "value": "Lukket",
+              "label": "Lukket"
+            },
+            {
+              "value": "Åpen",
+              "label": "Åpen"
+            }
+          ]
+        }
+      },
+      {
+        "name": "omrEtableringDato",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Beskriver når LGN-området ble etablert"
+      },
+      {
+        "name": "nedbørÅrMin",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Angir LGN-områdets minste årlige nedbør i perioden 1960 til 1990"
+      },
+      {
+        "name": "nedbørÅrMid",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Angir LGN-områdets gjennomsnittlig årlig nedbør i perioden 1960 til 1990"
+      },
+      {
+        "name": "nedbørÅrMaks",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Angir LGN-områdets høyeste årlige nedbør i perioden 1960 til 1990"
+      },
+      {
+        "name": "tempÅrMiddel",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Angir LGN-områdets gjennomsnittlig årlig temperatur 1960 til 1990"
+      },
+      {
+        "name": "navnPåVassdrag",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Vassdragsnavn jf NVEs databaser (ved eventuelle endringer ikke oppdatert, se NVEs nettsider)"
+      },
+      {
+        "name": "vassdragsnummer",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Unik identifikasjon på nedbørsfelt som et hierarkisk system i henhold til NVEs REGINE (REGIster over NEdbørsfelt (T15).<br/>Vassdragsnummer jf NVEs databaser (ved eventuelle endringer ikke oppdatert, se NVEs nettsider)"
+      },
+      {
+        "name": "kommentar",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Beskriver formål, historikk, referanser og kontakt"
+      },
+      {
+        "name": "lgngrunnvannoppkomme",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "lgnbrønn",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sonderboring",
+    "description": "Undersøkelsesboring benyttet til å karakterisere løsmassenes egenskaper, vanligvis for å estimere om massene er grove og velsorterte nok til å kunne levere grunnvann til vannforsyning. Før ca år 2000   var håndholdt borutstyr vanligst, etter hvert mer vanlig med utstyr tilsvarende det som benyttes under geotekniske boringer.",
+    "geometry": {
+      "itemType": "feature",
+      "type": "geometry-point",
+      "crs": [
+        "#/crs",
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      ],
+      "storageCrs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "format": "geometry-point",
+      "ogcRole": "primary-geometry"
+    },
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "date-time (string)",
+        "cardinality": "1..1",
+        "description": "Dato for uttak fra en database<br/>Merknad:<br/>Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "ogcRole": "primary-instant"
+      },
+      {
+        "name": "brønnNr",
+        "type": "integer",
+        "cardinality": "1..1",
+        "description": "Brønnummer i NGUs database",
+        "ogcRole": "id"
+      },
+      {
+        "name": "geolMedium",
+        "type": "GeolMedium",
+        "cardinality": "1..1",
+        "description": "Definerer om et borehull er boret slik at den blir permanent åpen; et stykke ned i fjellgrunnen (fjell) eller kun i løsmasser (løsmasse).",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Fjell",
+              "label": "Fjell"
+            },
+            {
+              "value": "Løsmasse",
+              "label": "Løsmasse"
+            }
+          ]
+        }
+      },
+      {
+        "name": "stedfestelseMetodeInfo",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Stedfestelsesmetode, for eksempel GPS, kart med flere. Fram til ca 2000 finnes en del registreringer som avviker betydelig fra brønnhullets reelle koordinater."
+      },
+      {
+        "name": "oppdragstaker",
+        "type": "string",
+        "cardinality": "1..1",
+        "description": "Navn på borefirma som har utført boringen"
+      },
+      {
+        "name": "brønnBrukOmfang",
+        "type": "BrønnBrukOmfang",
+        "cardinality": "0..1",
+        "description": "Hvor omfattende vannforsyningen er (til enkelthusholdning, gårdsbruk osv.)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Annen industri",
+              "label": "Annen industri"
+            },
+            {
+              "value": "Enkelthusholdning",
+              "label": "Enkelthusholdning"
+            },
+            {
+              "value": "Forskning",
+              "label": "Forskning"
+            },
+            {
+              "value": "Gårdsbruk",
+              "label": "Gårdsbruk"
+            },
+            {
+              "value": "Hytte/fritidsbolig",
+              "label": "Hytte/fritidsbolig"
+            },
+            {
+              "value": "Miljøundersøkelser/overvåkning",
+              "label": "Miljøundersøkelser/overvåkning"
+            },
+            {
+              "value": "Næringsmiddelproduksjon",
+              "label": "Næringsmiddelproduksjon"
+            },
+            {
+              "value": "Større anlegg",
+              "label": "Større anlegg"
+            },
+            {
+              "value": "Turistnæring",
+              "label": "Turistnæring"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            },
+            {
+              "value": "Undersøkelse for energibrønn/anlegg",
+              "label": "Undersøkelse for energibrønn/anlegg"
+            },
+            {
+              "value": "Undersøkelse for vannforsyning",
+              "label": "Undersøkelse for vannforsyning"
+            },
+            {
+              "value": "Vannforsyning",
+              "label": "Vannforsyning"
+            },
+            {
+              "value": "Vanningsanlegg",
+              "label": "Vanningsanlegg"
+            },
+            {
+              "value": "Vannverk",
+              "label": "Vannverk"
+            }
+          ]
+        }
+      },
+      {
+        "name": "boreDato",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for boringen"
+      },
+      {
+        "name": "konsulentFirma",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Konsulentfirma, som for eksempel har valgt ut borelokalitet, eller som har utredet aspekter ved bruk av brønnen."
+      },
+      {
+        "name": "boretLengde",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Total lengde av borehullets forløp, tilsvarer dyp ved vertikal boring"
+      },
+      {
+        "name": "boretLengdeTilBerg",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Dybde til berg som ikke er målt men basert på tolkning"
+      },
+      {
+        "name": "vannstandBorehull",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Stabil vannstand etter boring målt fra overflaten i meter."
+      },
+      {
+        "name": "datoVannstandBorehull",
+        "type": "date (string)",
+        "cardinality": "0..1",
+        "description": "Dato for når vannstand etter boring er målt  (før eventuell kapasitetsøkning)."
+      },
+      {
+        "name": "brønnHelningType",
+        "type": "BrønnHelningType",
+        "cardinality": "0..1",
+        "description": "Hvilken type helning borehullet kan ha (grovinndeling)",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Horisontal",
+              "label": "Horisontal"
+            },
+            {
+              "value": "Loddrett",
+              "label": "Loddrett"
+            },
+            {
+              "value": "Skrå",
+              "label": "Skrå"
+            }
+          ]
+        }
+      },
+      {
+        "name": "diameterBorehull",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets diameter målt i millimeter. For fjellbrønner oppgis dominerende diameter på borhullet nedenfor foringsrørets avslutning."
+      },
+      {
+        "name": "boretHelningsgrad",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Borehullets hellning målt som avvik i grader fra loddlinje"
+      },
+      {
+        "name": "boretAzimuth",
+        "type": "integer",
+        "cardinality": "0..1",
+        "description": "Helning hvor  90 grader er vertikalt , 0 grader er horisontalt"
+      },
+      {
+        "name": "materialForingsrør",
+        "type": "MaterialForingsrør",
+        "cardinality": "0..1",
+        "description": "Foringsrørets materialtype",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Damprør",
+              "label": "Damprør"
+            },
+            {
+              "value": "PE",
+              "label": "PE"
+            },
+            {
+              "value": "PVC",
+              "label": "PVC"
+            },
+            {
+              "value": "Plast",
+              "label": "Plast"
+            },
+            {
+              "value": "Rustfritt stål",
+              "label": "Rustfritt stål"
+            },
+            {
+              "value": "Stål",
+              "label": "Stål"
+            }
+          ]
+        }
+      },
+      {
+        "name": "lengdeForingsrør",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Foringsrørets lengde i meter"
+      },
+      {
+        "name": "boretKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time før eventuell kapsitetsøkende trykking eller sprengning. Vanligvis målt nokså usikkert av boreren i forbindelse med selve boringen."
+      },
+      {
+        "name": "kapasMålemet",
+        "type": "KapasMålemet",
+        "cardinality": "0..1",
+        "description": "Beskriver målemetode brukt for å måle brønnens kapasitet (vanngiverevne). Hvis brønnen senere er trykket eller sprengt for å øke kapasiteten,  oppgis her den målemetoden som er brukt FØR denne kapasitetsøkningen.",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Blåsing",
+              "label": "Blåsing"
+            },
+            {
+              "value": "Prøvepumping",
+              "label": "Prøvepumping"
+            },
+            {
+              "value": "Stigningstest",
+              "label": "Stigningstest"
+            }
+          ]
+        }
+      },
+      {
+        "name": "kapasØkningType",
+        "type": "KapasØkningType",
+        "cardinality": "0..1",
+        "description": "Beskriver om brønnen er sprengt eller trykket for å øke kapasiteten",
+        "valueDomain": {
+          "type": "enumeration",
+          "listedValues": [
+            {
+              "value": "Sprengning",
+              "label": "Sprengning"
+            },
+            {
+              "value": "Trykking",
+              "label": "Trykking"
+            },
+            {
+              "value": "Ukjent",
+              "label": "Ukjent"
+            }
+          ]
+        }
+      },
+      {
+        "name": "øktKapasitet",
+        "type": "number",
+        "cardinality": "0..1",
+        "description": "Brønnens kapasitet (\"vannføring\") i liter/time målt etter eventuell kapsitetsøkende trykking eller sprengning."
+      },
+      {
+        "name": "beskrivelse",
+        "type": "string",
+        "cardinality": "0..1",
+        "description": "Forklaring til objektet og undersøkelser utført på lokaliteten.\r\nBrønnborers generelle kommentarer til boringen, gitt på brønnskjema"
+      },
+      {
+        "name": "rapport-HTML",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      },
+      {
+        "name": "rapport-JSON",
+        "type": "Link",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "href",
+            "type": "uri-reference (string)",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "rel",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "cardinality": "0..1"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "cardinality": "0..1"
+          }
+        ]
+      }
+    ]
+  }
+]
