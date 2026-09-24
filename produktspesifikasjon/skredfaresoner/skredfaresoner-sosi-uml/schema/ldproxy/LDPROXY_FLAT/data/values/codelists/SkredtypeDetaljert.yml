@@ -1,0 +1,30 @@
+---
+label: SkredtypeDetaljert
+entries:
+  Fjellskred (> 10 000 m3): Fjellskred (> 10 000 m3)
+  Flakskred, uspesifisert: "Flakskred, uspesifisert"
+  Flomskred: Flomskred
+  Ikke angitt: Ikke angitt
+  Isnedfall, uspesifisert: "Isnedfall, uspesifisert"
+  Jordskred: Jordskred
+  Jordskred, uspesifisert: "Jordskred, uspesifisert"
+  Kvikkleireskred: Kvikkleireskred
+  Leirskred: Leirskred
+  Lite fjellskred (100 - 10 000 m3): Lite fjellskred (100 - 10 000 m3)
+  Løsmasseskred, uspesifisert: "Løsmasseskred, uspesifisert"
+  Løssnøskred, uspesifisert: "Løssnøskred, uspesifisert"
+  Ny, ikke-godkjent skredtype: "Ny, ikke-godkjent skredtype"
+  Skavlfall: Skavlfall
+  Snøskred, uspesifisert: "Snøskred, uspesifisert"
+  Steinskred, uspesifisert: "Steinskred, uspesifisert"
+  Steinsprang (< 100 m3): Steinsprang (< 100 m3)
+  Sørpeskred: Sørpeskred
+  Tørt flakskred: Tørt flakskred
+  Tørt løssnøskred: Tørt løssnøskred
+  Tørt snøskred: Tørt snøskred
+  Undervannsskred, uspesifisert: "Undervannsskred, uspesifisert"
+  Utglidning av veg: Utglidning av veg
+  Vått flakskred: Vått flakskred
+  Vått løssnøskred: Vått løssnøskred
+  Vått snøskred: Vått snøskred
+sourceType: TEMPLATES

@@ -1,0 +1,290 @@
+---
+id: skredfaresoner_sosi_uml
+enabled: true
+providerType: FEATURE
+providerSubType: SQL
+nativeCrs:
+  code: 25833
+  forceAxisOrder: NONE
+nativeTimeZone: Europe/Oslo
+connectionInfo:
+  database: FIXME
+  host: FIXME
+  user: FIXME
+  password: FIXME-base64-encoded
+  schemas:
+  - public
+sourcePathDefaults:
+  primaryKey: objid
+  sortKey: objid
+types:
+  analyseområde:
+    sourcePath: /analyseområde
+    type: OBJECT
+    objectType: Analyseområde
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+      analyseområdeGrense:
+        sourcePath: "[objid=analyseområdeobjid]Analyseområde_analyseområdeGrense/[analyseområdegrobjid=objid]analyseområdegr"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: AnalyseområdeGr-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: AnalyseområdeGr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/analyseområdegr/items/{{value}}"
+  analyseområdegr:
+    sourcePath: /analyseområdegr
+    type: OBJECT
+    objectType: AnalyseområdeGr
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      grense:
+        sourcePath: grense
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+  kartleggingsområde:
+    sourcePath: /kartleggingsområde
+    type: OBJECT
+    objectType: Kartleggingsområde
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+      kartleggingsområdeID:
+        sourcePath: kartleggingsområdeid
+        type: STRING
+      kartleggingsområdeNavn:
+        sourcePath: kartleggingsområdenavn
+        type: STRING
+      kartleggingStatus:
+        sourcePath: kartleggingstatus
+        type: STRING
+        constraints:
+          codelist: Prosjektstatus_NVE
+      områdekant:
+        sourcePath: "[objid=kartleggingsområdeobjid]Kartleggingsområde_områdekant/[kartleggingsområdekantobjid=objid]kartleggingsområdekant"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: Kartleggingsområdekant-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: Kartleggingsområdekant-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/kartleggingsområdekant/items/{{value}}"
+  kartleggingsområdekant:
+    sourcePath: /kartleggingsområdekant
+    type: OBJECT
+    objectType: Kartleggingsområdekant
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      grense:
+        sourcePath: grense
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+  kvikkleirefaresoneavgr:
+    sourcePath: /kvikkleirefaresoneavgr
+    type: OBJECT
+    objectType: KvikkleireFaresoneAvgr
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      grense:
+        sourcePath: grense
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+  skredfaregrense:
+    sourcePath: /skredfaregrense
+    type: OBJECT
+    objectType: SkredFaregrense
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      grense:
+        sourcePath: grense
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+  skredfaresone:
+    sourcePath: /skredfaresone
+    type: OBJECT
+    objectType: SkredFaresone
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+      skredtype:
+        sourcePath: skredtype
+        type: STRING
+        constraints:
+          codelist: SkredtypeDetaljert
+          required: true
+      skredStatistikkSannsynlighet:
+        sourcePath: skredstatistikksannsynlighet
+        type: STRING
+        constraints:
+          codelist: SkredSannsynlighet
+          required: true
+      skredFaregrense:
+        sourcePath: "[objid=skredfaresoneobjid]SkredFaresone_skredFaregrense/[skredfaregrenseobjid=objid]skredfaregrense"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: SkredFaregrense-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: SkredFaregrense-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/skredfaregrense/items/{{value}}"
+  skredtypepunkt:
+    sourcePath: /skredtypepunkt
+    type: OBJECT
+    objectType: SkredTypePunkt
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      punkt:
+        sourcePath: punkt
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true
+      skredOmrID:
+        sourcePath: skredomrid
+        type: INTEGER
+        constraints:
+          required: true
+      skredtype:
+        sourcePath: skredtype
+        type: STRING
+        constraints:
+          codelist: SkredtypeDetaljert
+          required: true
+  utlopomr:
+    sourcePath: /utlopomr
+    type: OBJECT
+    objectType: UtlopOmr
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      kvikkleireFaresoneAvgr:
+        sourcePath: "[objid=utlopomrobjid]UtlopOmr_kvikkleireFaresoneAvgr/[kvikkleirefaresoneavgrobjid=objid]kvikkleirefaresoneavgr"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: KvikkleireFaresoneAvgr-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: KvikkleireFaresoneAvgr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/kvikkleirefaresoneavgr/items/{{value}}"
+  utlosningomr:
+    sourcePath: /utlosningomr
+    type: OBJECT
+    objectType: UtlosningOmr
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      kvikkleireFaresoneAvgr:
+        sourcePath: "[objid=utlosningomrobjid]UtlosningOmr_kvikkleireFaresoneAvgr/[kvikkleirefaresoneavgrobjid=objid]kvikkleirefaresoneavgr"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: KvikkleireFaresoneAvgr-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: KvikkleireFaresoneAvgr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/kvikkleirefaresoneavgr/items/{{value}}"
