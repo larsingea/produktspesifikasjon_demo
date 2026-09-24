@@ -1,0 +1,9 @@
+metadataId: 901afb33-8897-40fb-80a5-f4e4e799ae68
+output_directory: produktspesifikasjon
+product_slug: bunnfellingsomrader
+updated: '2026-09-24'
+scopes:
+- name: Bunnfellingsomrader
+  url: https://geo.ngu.no/api/features/bunnfellingsomrader
+  generator: ogc_feature_api
+  description: OGC API-Features fra Norges geologiske undersøkelse
