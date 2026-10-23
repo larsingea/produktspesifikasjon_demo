@@ -1,0 +1,10 @@
+metadataId: 041f1e6e-bdbc-4091-b48f-8a5990f3cc5b
+output_directory: produktspesifikasjon
+product_slug: administrative_enheter_kommuner
+updated: '2026-10-23'
+outputs: pygeoapi,ldproxy
+scopes:
+- name: UML_Administrative_enheter
+  url: https://sosi.geonorge.no/svn/SOSI/SOSI%20Del%203/Statens%20kartverk/AdministrativeEnheter_FylkerOgKommuner-20240101.xml
+  generator: xmi
+  description: ''
