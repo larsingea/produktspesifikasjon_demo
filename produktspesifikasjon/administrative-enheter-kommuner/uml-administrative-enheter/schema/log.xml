@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="/home/runner/work/produktspesifikasjon_demo/produktspesifikasjon_demo/produktspesifikasjon/administrative-enheter-kommuner/uml-administrative-enheter/schema/shapechange-config.xml" end="Fri Oct 23 13:03:13 UTC 2026" resultCode="0" start="Fri Oct 23 13:03:08 UTC 2026" version="4.0.0">
+  <Messages>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: START ----------"/>
+    <Info message="Validating input parameters."/>
+    <Info message="Validation of input parameters completed."/>
+    <Info message="Validating log parameters."/>
+    <Info message="Validation of log parameters completed."/>
+    <ProcessFlowInfo message="--- Validating transformer with @id 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' and @inputs 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: COMPLETE ----------"/>
+    <ProcessFlowInfo message="Now processing transformation 'LDPROXY_FLAT' for input ID: 'INPUT'."/>
+    <ProcessFlowInfo message="========== processing phase =========="/>
+    <ProcessFlowInfo message="---------- now processing: rule-trf-prop-flatten-types ----------"/>
+    <ProcessFlowInfo message="========== postprocessing phase =========="/>
+    <ProcessFlowInfo message="---------- TransformationManager postprocessing: validating constraints ----------"/>
+    <ProcessFlowInfo message="Performed transformation for transformer ID 'LDPROXY_FLAT' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'uml-administrative-enheter', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/administrative-enheter-kommuner/uml-administrative-enheter/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'Ldproxy (v2)' for input 'LDPROXY_FLAT'."/>
+    <Info message="The target configuration does not contain advanced process configuration infos."/>
+    <Error message="Type 'Fylke' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'uml-administrative-enheter::AdministrativeEnheter_FylkerOgKommuner-20240101::Fylke'"/>
+    </Error>
+    <Error message="Type 'Grense' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'uml-administrative-enheter::AdministrativeEnheter_FylkerOgKommuner-20240101::Grense'"/>
+    </Error>
+    <Error message="Type 'Kommune' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'uml-administrative-enheter::AdministrativeEnheter_FylkerOgKommuner-20240101::Kommune'"/>
+    </Error>
+    <Warning message="Type 'SOSI_Fellesegenskaper' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'uml-administrative-enheter::AdministrativeEnheter_FylkerOgKommuner-20240101::SOSI_Fellesegenskaper'"/>
+    </Warning>
+    <Warning message="Type 'SOSI_Objekt_flate' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'uml-administrative-enheter::AdministrativeEnheter_FylkerOgKommuner-20240101::SOSI_Objekt_flate'"/>
+    </Warning>
+    <Warning message="Type 'SOSI_Objekt_grense' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'uml-administrative-enheter::AdministrativeEnheter_FylkerOgKommuner-20240101::SOSI_Objekt_grense'"/>
+    </Warning>
+    <Info message="Could not compute a label for codelist/enumeration 'Språkkode'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml-administrative-enheter::Språkkode'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Kommunenummer'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml-administrative-enheter::Kommunenummer'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'TypeAvgrensning'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml-administrative-enheter::TypeAvgrensning'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Målemetode'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml-administrative-enheter::Målemetode'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Fylkesnummer'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml-administrative-enheter::Fylkesnummer'"/>
+    </Info>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' for input ID: 'LDPROXY_FLAT'.&#10;-------------------------------------------------"/>
+  </Messages>
+  <Results/>
+</ShapeChangeResult>
