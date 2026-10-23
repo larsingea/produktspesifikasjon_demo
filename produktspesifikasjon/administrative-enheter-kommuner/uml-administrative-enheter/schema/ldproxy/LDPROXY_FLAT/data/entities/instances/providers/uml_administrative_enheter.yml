@@ -1,0 +1,178 @@
+---
+id: uml_administrative_enheter
+enabled: true
+providerType: FEATURE
+providerSubType: SQL
+nativeCrs:
+  code: 25833
+  forceAxisOrder: NONE
+nativeTimeZone: Europe/Oslo
+connectionInfo:
+  database: FIXME
+  host: FIXME
+  user: FIXME
+  password: FIXME-base64-encoded
+  schemas:
+  - public
+sourcePathDefaults:
+  primaryKey: objid
+  sortKey: objid
+types:
+  fylke:
+    sourcePath: /fylke
+    type: OBJECT
+    objectType: Fylke
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: MULTI_POLYGON
+        constraints:
+          required: true
+      administrativEnhetNavn_navn:
+        sourcePath: "[objid=fylkeobjid]Fylke_administrativEnhetNavn_navn/administrativenhetnavn_navn"
+        type: VALUE_ARRAY
+        valueType: STRING
+        constraints:
+          required: true
+          minOccurrence: 1
+      administrativEnhetNavn_språk:
+        sourcePath: "[objid=fylkeobjid]Fylke_administrativEnhetNavn_språk/administrativenhetnavn_språk"
+        type: VALUE_ARRAY
+        valueType: STRING
+        constraints:
+          codelist: Spr_kkode
+          required: true
+          minOccurrence: 1
+      administrativEnhetNavn_rekkefølge:
+        sourcePath: "[objid=fylkeobjid]Fylke_administrativEnhetNavn_rekkefølge/administrativenhetnavn_rekkefølge"
+        type: VALUE_ARRAY
+        valueType: INTEGER
+        constraints:
+          minOccurrence: 0
+      fylkesnummer:
+        sourcePath: fylkesnummer
+        type: STRING
+        constraints:
+          codelist: Fylkesnummer
+          required: true
+      fylkesnavn:
+        sourcePath: fylkesnavn
+        type: STRING
+        constraints:
+          required: true
+      samiskForvaltningsområde:
+        sourcePath: samiskforvaltningsområde
+        type: BOOLEAN
+      avgrensesAvGrense:
+        sourcePath: "[objid=fylkeobjid]Fylke_avgrensesAvGrense/[grenseobjid=objid]grense"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          minOccurrence: 0
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: Grense-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: Grense-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/grense/items/{{value}}"
+  grense:
+    sourcePath: /grense
+    type: OBJECT
+    objectType: Grense
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      grense:
+        sourcePath: grense
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+      avgrensningstype:
+        sourcePath: avgrensningstype
+        type: STRING
+        constraints:
+          codelist: TypeAvgrensning
+          required: true
+  kommune:
+    sourcePath: /kommune
+    type: OBJECT
+    objectType: Kommune
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: MULTI_POLYGON
+        constraints:
+          required: true
+      administrativEnhetNavn_navn:
+        sourcePath: "[objid=kommuneobjid]Kommune_administrativEnhetNavn_navn/administrativenhetnavn_navn"
+        type: VALUE_ARRAY
+        valueType: STRING
+        constraints:
+          required: true
+          minOccurrence: 1
+      administrativEnhetNavn_språk:
+        sourcePath: "[objid=kommuneobjid]Kommune_administrativEnhetNavn_språk/administrativenhetnavn_språk"
+        type: VALUE_ARRAY
+        valueType: STRING
+        constraints:
+          codelist: Spr_kkode
+          required: true
+          minOccurrence: 1
+      administrativEnhetNavn_rekkefølge:
+        sourcePath: "[objid=kommuneobjid]Kommune_administrativEnhetNavn_rekkefølge/administrativenhetnavn_rekkefølge"
+        type: VALUE_ARRAY
+        valueType: INTEGER
+        constraints:
+          minOccurrence: 0
+      kommunenummer:
+        sourcePath: kommunenummer
+        type: STRING
+        constraints:
+          codelist: Kommunenummer
+          required: true
+      kommunenavn:
+        sourcePath: kommunenavn
+        type: STRING
+        constraints:
+          required: true
+      samiskForvaltningsområde:
+        sourcePath: samiskforvaltningsområde
+        type: BOOLEAN
+      avgrensesAvGrense:
+        sourcePath: "[objid=kommuneobjid]Kommune_avgrensesAvGrense/[grenseobjid=objid]grense"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          minOccurrence: 0
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: Grense-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: Grense-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/grense/items/{{value}}"
